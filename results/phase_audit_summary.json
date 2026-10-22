@@ -1,0 +1,9 @@
+{
+  "scope": "Descriptive recomputation from per-window aggregates digitized from third-party plot; not native samples; no time-series or route-level inference",
+  "as30873_gap_early_pp": 56.12415031422343,
+  "as30873_gap_acute_pp": 50.81441580094909,
+  "as30873_gap_post_midnight_pp": 44.61972553546237,
+  "as12486_acute_active_mean_retention_pct": 95.57092962600673,
+  "as12486_acute_active_median_retention_pct": 100.0,
+  "interpretation": "AS12486 median 100% does not establish no transient disruption; acute mean is below 100%. Raster columns are not independent measurements."
+}

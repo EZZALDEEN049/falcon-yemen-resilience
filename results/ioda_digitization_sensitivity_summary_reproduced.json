@@ -1,0 +1,13 @@
+{
+  "n_valid_combinations": 20250,
+  "central_divergence_percentage_points": 50.8144158009491,
+  "central_bgp_retention": 0.9565217391304348,
+  "central_active_retention": 0.4483775811209439,
+  "minimum_divergence_percentage_points": 45.80740971011685,
+  "maximum_divergence_percentage_points": 55.16976868644823,
+  "p05_divergence_percentage_points": 47.4885153885761,
+  "median_divergence_percentage_points": 50.51943055021162,
+  "p95_divergence_percentage_points": 53.42016449452161,
+  "grid_description": "Summary recomputed from the complete sensitivity-result table included in Online Resource 1; the original third-party IODA raster is not redistributed.",
+  "interpretation": "Sensitivity-summary reproduction only; this does not substitute for native IODA samples or a fresh pixel-level extraction from the source raster."
+}

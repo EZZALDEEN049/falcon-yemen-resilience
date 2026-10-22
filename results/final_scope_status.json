@@ -1,0 +1,11 @@
+{
+  "submission_scope": "evidence-constrained structural-functional divergence case study",
+  "raw_ioda": "preferred primary-data strengthening upgrade; current plot-derived result is bounded by a full-factorial sensitivity grid and is explicitly labeled as derived evidence",
+  "historical_bgp_mrt": "optional strengthening upgrade; route-level metrics withheld",
+  "semi_markov": "not a core empirical claim",
+  "machine_learning": "excluded",
+  "physical_vs_logical_redundancy": "discussion-only engineering implication; not a research question or core contribution",
+  "2023_event": "cross-event transferability challenge; no general event-class law claimed",
+  "2022_event": "qualitative failure-mode challenge",
+  "sensitivity_analysis": "full-factorial grid with 20,250 valid parameter settings; settings are not independent experiments, and tested y-axis scale/RGB tolerance dimensions were invariant within numerical precision"
+}

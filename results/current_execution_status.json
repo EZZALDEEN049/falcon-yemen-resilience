@@ -1,0 +1,13 @@
+{
+  "checked_utc_date": "2026-10-22",
+  "ioda_executed": true,
+  "ioda_success_count": 0,
+  "ioda_failure_count": 4,
+  "ioda_error_categories": [
+    "ConnectionError"
+  ],
+  "bgpreader_on_path": false,
+  "historical_bgp_measured": false,
+  "data_scope": "No raw IODA or 2020 BGP metrics were collected here; source API/docs were researched online separately",
+  "acquisition_failure_not_negative_observation": true
+}

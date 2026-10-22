@@ -1,0 +1,8 @@
+Third-party source images intentionally excluded from this submission package:
+
+1. jan-9-10-yemen-AS30873-IODA.png
+2. jan-9-10-yemen-AS12486-IODA.png
+
+Originating platform: Internet Outage Detection and Analysis (IODA), Georgia Tech Internet Intelligence Lab.
+Reason for exclusion: avoid redistribution of third-party artwork without explicit republication permission.
+The manuscript reports only derived values and author-generated figures; source-image provenance and the extraction method remain documented.

@@ -1,7 +1,7 @@
-# Maintainer status — 23 October 2026
+# Maintainer record — 22 October 2026
 
-This private repository is connected to ChatGPT's GitHub integration. Its bootstrap GitHub Actions workflow has been committed, but the main research ZIP package has **not** been uploaded to GitHub. Cloud reproduction and native data retrieval have **not** been run.
+Repository template assembled locally from submitted ESM_Enhanced evidence package and manuscript. This document does not certify that cloud workflows were run. GitHub Actions execution will begin **only after** project files are committed into an accessible private repository and Actions is enabled.
 
-The approved research archive is `falcon-yemen-resilience_GitHub_Ready_v2.zip` (SHA-256 `78c8ad1da10282bf1563fbbee0a16d374808cf7342e2d6679c83da70c74ac187`). The workflow is configured to reject any different archive. GitHub Actions can extract and validate it after that exact file is uploaded to the repository root.
+Data API availability and long-term coverage are external dependencies. A failed native retrieval must not be replaced by plot-derived sample values while claiming native measurement.
 
-Historical IODA native samples and historical BGP route-state reconstruction remain unverified. Never report plot-digitized values as native data, and never treat BGP discovery as validated routing-change evidence.
+Historical BGP workflow is a **discovery step** (origin-filtered seed RIB) and will not compute topology-scale exposure, provider switching, event-time resilience, or causal dependency effects. Original prototype requiring origin-filtered UPDATEs was isolated to `archive/legacy/` as unsafe.
