@@ -1,0 +1,111 @@
+name: Bootstrap FALCON Research Repository
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'falcon-yemen-resilience_GitHub_Ready_v2.zip'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: falcon-repository-bootstrap
+  cancel-in-progress: false
+
+jobs:
+  bootstrap:
+    if: github.repository == 'EZZALDEEN049/falcon-yemen-resilience'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout private repository
+        uses: actions/checkout@v4
+
+      - name: Verify research package and extract safely
+        env:
+          EXPECTED_ARCHIVE_SHA256: 78c8ad1da10282bf1563fbbee0a16d374808cf7342e2d6679c83da70c74ac187
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib
+          import os
+          from pathlib import Path, PurePosixPath
+          import shutil
+          import stat
+          import sys
+          import zipfile
+
+          archive = Path('falcon-yemen-resilience_GitHub_Ready_v2.zip')
+          if not archive.is_file():
+              raise SystemExit('Approved ZIP not present. Upload the matching research package before running this workflow.')
+          digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+          if digest != os.environ['EXPECTED_ARCHIVE_SHA256']:
+              raise SystemExit('ZIP checksum mismatch: extraction refused')
+          root = Path.cwd().resolve()
+          prefix = 'falcon-yemen-resilience/'
+          files = 0
+          bytes_total = 0
+          with zipfile.ZipFile(archive) as src:
+              invalid = src.testzip()
+              if invalid:
+                  raise SystemExit(f'Corrupted ZIP entry: {invalid}')
+              for member in src.infolist():
+                  if not member.filename.startswith(prefix):
+                      raise SystemExit('Unexpected archive root')
+                  rel = PurePosixPath(member.filename[len(prefix):])
+                  if member.is_dir():
+                      continue
+                  if not rel.parts or rel.is_absolute() or '..' in rel.parts or '.git' in rel.parts:
+                      raise SystemExit('Unsafe archive member: ' + member.filename)
+                  if stat.S_ISLNK(member.external_attr >> 16):
+                      raise SystemExit('ZIP symlinks are not permitted')
+                  files += 1
+                  bytes_total += member.file_size
+                  if files > 200 or bytes_total > 30_000_000:
+                      raise SystemExit('Unexpected ZIP size')
+                  dest = root.joinpath(*rel.parts)
+                  if not dest.resolve().is_relative_to(root):
+                      raise SystemExit('Path traversal refused')
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  with src.open(member) as input_file, dest.open('wb') as output_file:
+                      shutil.copyfileobj(input_file, output_file)
+          archive.unlink()
+          print(f'Extracted {files} verified research files ({bytes_total} bytes)')
+          PY
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+
+      - name: Audit and reproduce results before committing
+        run: |
+          python -m pip install -r requirements.txt
+          python tests/test_guardrails.py
+          python code/reproduce_all.py
+          python tools/check_reproduction.py
+
+      - name: Save reproducibility report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: bootstrap-reproducibility
+          path: |
+            results/*.json
+            results/*.csv
+          retention-days: 14
+          if-no-files-found: warn
+
+      - name: Commit verified project
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          if git diff --cached --quiet; then
+            echo 'No new files to commit'
+          else
+            git commit -m 'Initialize verified FALCON research project'
+            git push origin HEAD:main
+          fi
