@@ -97,8 +97,8 @@ def main():
         result=list(pool.map(fetch,TARGETS))
     report={
       "scope":"Historical IODA January 2020 original-source archive discovery",
-      "conclusion":"No claim that inaccessible endpoints prove global data loss.",
-      "original_2020_recovered": any(r["numeric_native_samples"]>0 and "2020" in r["label"] and "signal" in r["label"] for r in result),
+      "conclusion":"Outage event-series samples are event indicators, not original bgp or ping-slash24 raw samples. Their nonempty values cannot satisfy native signal recovery. Inaccessible endpoints do not prove global data loss.",
+      "original_2020_recovered": any(r["numeric_native_samples"]>0 and r["label"] in ("v2_signal_2020_AS30873","v2_signal_2020_YE") and r["status"]=="SIGNALS_PRESENT_REQUIRE_VALIDATION" for r in result),
       "tested_urls":result,
       "sources":[
          "https://www.caida.org/projects/ioda/",
