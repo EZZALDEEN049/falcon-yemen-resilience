@@ -1,5 +1,9 @@
 name: Full Research Pipeline
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/research-run.txt'
   workflow_dispatch:
     inputs:
       ioda_event:
@@ -66,7 +70,7 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - name: Request and validate the selected historical event
         env:
-          SELECTED_EVENT: ${{ inputs.ioda_event }}
+          SELECTED_EVENT: ${{ inputs.ioda_event || 'FALCON_2020' }}
         run: |
           mkdir -p _artifacts/native_ioda
           python tools/run_ioda_job.py --event "$SELECTED_EVENT" --out _artifacts/native_ioda
@@ -74,13 +78,13 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: native-ioda-${{ inputs.ioda_event }}
+          name: native-ioda-${{ inputs.ioda_event || 'FALCON_2020' }}
           path: _artifacts/native_ioda/
           retention-days: 14
           if-no-files-found: warn
   bgp:
     name: Discover BGP candidates for AS${{ matrix.asn }} (not route reconstruction)
-    if: ${{ inputs.discover_bgp }}
+    if: ${{ github.event_name == 'push' || inputs.discover_bgp }}
     runs-on: ubuntu-latest
     timeout-minutes: 55
     strategy:
@@ -94,7 +98,7 @@ jobs:
       - name: Query official archive metadata and candidate origin RIB
         env:
           ASN: ${{ matrix.asn }}
-          COLLECTOR: ${{ inputs.bgp_collector }}
+          COLLECTOR: ${{ inputs.bgp_collector || 'rrc00' }}
         run: |
           mkdir -p _artifacts/bgp
           START=$(date -u -d '2020-01-09 08:00:00 UTC' +%s)
@@ -105,7 +109,7 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: bgp-discovery-${{ matrix.asn }}-${{ inputs.bgp_collector }}
+          name: bgp-discovery-${{ matrix.asn }}-${{ inputs.bgp_collector || 'rrc00' }}
           path: _artifacts/bgp/
           retention-days: 14
           if-no-files-found: warn
