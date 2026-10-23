@@ -1,0 +1,26 @@
+name: Forensic Review of IODA 2020 Event Signals
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/ioda-forensic-trigger.txt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  forensic:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python tools/ioda_event_forensic_2020.py
+      - name: Store raw JSON and metadata for provenance audit
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ioda-2020-event-forensic-original-responses
+          path: _artifacts/ioda_2020_forensic/
+          retention-days: 30
