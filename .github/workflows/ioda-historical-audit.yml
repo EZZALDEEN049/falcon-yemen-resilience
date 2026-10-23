@@ -1,0 +1,28 @@
+name: Audit Original 2020 IODA Archives
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/ioda-history-trigger.txt'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  archive-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Probe current and historically documented CAIDA endpoints
+        run: python tools/test_historical_ioda_endpoints.py
+      - name: Archive response classifications and URLs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ioda-historical-availability-audit
+          path: _artifacts/ioda_2020_legacy_diagnostic/
+          retention-days: 30
+          if-no-files-found: warn
