@@ -6,11 +6,11 @@
 - A passing GitHub action is code execution evidence, not validation of the scientific claim.
 - Keep the original manuscript, sources, and rerunnable scripts.
 
-## 1 — Correct the current evidence status in the manuscript [COMPLETED LOCALLY; SOURCE REPO DOCX PENDING SYNC]
+## 1 — Correct the current evidence status in the manuscript [COMPLETED LOCALLY AND ON GITHUB]
 Scope: Abstract, §4.2, BGP limitations, reproducibility (§12). Four paragraphs changed, no numeric claims changed. Correct the outdated statement that January 2020 IODA acquisition merely failed due to DNS: v2 returned HTTP 200 and no native samples for the requested series. Describe exploratory RIPE RIS records without claiming a validated event-time prefix universe. Explicitly distinguish recovered 2023 native IODA data from unavailable 2020 samples.
 
-New locally rendered and quality-checked document: `Manuscript_2026-10-24_Evidence_Status_Updated.docx`.
-This corrected DOCX is not yet committed to GitHub; the GitHub `paper/Manuscript_Revised_Evidence_Bounded.docx` remains the prior version.
+New locally rendered and quality-checked document, now also committed by GitHub Actions: `paper/Manuscript_2026-10-24_Evidence_Status_Updated.docx`. The original and prior revised manuscript files remain unchanged.
+Verified successful step-1 cloud job: https://github.com/EZZALDEEN049/falcon-yemen-resilience/actions/runs/40042125287
 
 ## 2 — Integrate November 2023 native IODA evidence [NEXT]
 - Verify the exact raw JSON and independent timestamp windows, median definitions, signal identities, coverage, and event provenance.
