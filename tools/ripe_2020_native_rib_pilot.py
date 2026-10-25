@@ -11,7 +11,7 @@ from pathlib import Path
 OUT=Path("_artifacts/2020_ripe_rib_pilot");OUT.mkdir(parents=True,exist_ok=True)
 FILES=[
   ("2020-01-09T08:00:00Z","bview.20200109.0800.gz"),
-  # second snapshot gated until the first full historical file has been successfully parsed
+  ("2020-01-10T00:00:00Z","bview.20200110.0000.gz"),
 ]
 BASE="https://data.ris.ripe.net/rrc00/2020.01/"
 ASNS={30873,12486}
