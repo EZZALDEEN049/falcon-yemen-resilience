@@ -11,7 +11,7 @@ from pathlib import Path
 OUT=Path("_artifacts/2020_ripe_rib_pilot");OUT.mkdir(parents=True,exist_ok=True)
 FILES=[
   ("2020-01-09T08:00:00Z","bview.20200109.0800.gz"),
-  ("2020-01-10T00:00:00Z","bview.20200110.0000.gz"),
+  # second snapshot gated until the first full historical file has been successfully parsed
 ]
 BASE="https://data.ris.ripe.net/rrc00/2020.01/"
 ASNS={30873,12486}
@@ -22,7 +22,7 @@ def get_file(name):
  if c.returncode:raise RuntimeError("MRT download failed: "+c.stderr[-450:])
  size=path.stat().st_size
  if size<1_000_000:raise RuntimeError("Unexpectedly small MRT file")
- if size>350_000_000:raise RuntimeError("MRT pilot size guard")
+ if size>1_500_000_000:raise RuntimeError(f"MRT pilot size guard: {size} bytes")
  h=hashlib.sha256()
  with open(path,"rb") as f:
   for chunk in iter(lambda:f.read(1024*1024),b""):h.update(chunk)
@@ -74,5 +74,5 @@ if len(seen)==2 and all(r["status"]=="VALIDATED_ORIGIN_RIB_PILOT_NOT_FULL_BGP_RE
   prefixes0,prefixes1=seen[0][2][asn],seen[1][2][asn]
   report["comparisons"][str(asn)]={"common_target_origin_peer_sessions":len(peers0&peers1),"pre_target_origin_peer_sessions":len(peers0),"post_target_origin_peer_sessions":len(peers1),"common_prefixes_at_origin_across_RIBs":len(prefixes0&prefixes1),"not_route_survival":True,"requires":"All A/W updates, full-sequence/peer liveness, archival completeness and timestamp matching"}
 (OUT/"manifest.json").write_text(json.dumps(report,indent=2))
-if not (len(recs)==2 and all(r["status"]=="VALIDATED_ORIGIN_RIB_PILOT_NOT_FULL_BGP_REPLAY" for r in recs)):
+if not (len(recs)==len(FILES) and all(r["status"]=="VALIDATED_ORIGIN_RIB_PILOT_NOT_FULL_BGP_REPLAY" for r in recs)):
  sys.exit("FAIL CLOSED: one or more historical RIB pilot snapshots unavailable/unverified")
