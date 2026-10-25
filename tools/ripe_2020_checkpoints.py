@@ -30,6 +30,9 @@ def get(arg):
  return row
 tasks=[(a,t) for a in ('AS30873','AS12486') for t in times]
 with concurrent.futures.ThreadPoolExecutor(max_workers=3) as pool:rows=list(pool.map(get,tasks))
+if all(r.get('v4_prefixes')==0 for r in rows if r.get('status')=='VALID_RIPESTAT_SNAPSHOT_NOT_IODA'):
+ for r in rows:
+  if r.get('status')=='VALID_RIPESTAT_SNAPSHOT_NOT_IODA':r['status']='CONFLICT_WITH_2020_RRC00_ORIGIN_RIB_DO_NOT_USE_ZERO'
 with open(out/'snapshot_summary.csv','w',newline='') as f:
  wr=csv.DictWriter(f,fieldnames=sorted(set().union(*(x.keys() for x in rows))));wr.writeheader();wr.writerows(rows)
 (out/'manifest.json').write_text(json.dumps({'purpose':'historical routing context; NOT IODA original samples, cable physical paths, user traffic or complete peer-matched replay','retrieval_utc':dt.datetime.now(dt.timezone.utc).isoformat(),'source':'https://stat.ripe.net/docs/data-api/api-endpoints/routing-status','rows':rows},indent=2))
