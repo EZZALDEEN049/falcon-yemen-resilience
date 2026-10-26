@@ -1,0 +1,24 @@
+name: Public 2020 Yemen RIPE Atlas Ping Discovery
+on:
+  push:
+    branches: [main]
+    paths: ['.github/atlas-2020-public-trigger.txt']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  explore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python tools/discover_public_ripe_atlas_yemen_ping_2020.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: genuine-2020-public-ripe-atlas-active-ping-discovery
+          path: _artifacts/ripe_atlas_public_2020_discovery/
+          retention-days: 30
