@@ -31,6 +31,12 @@ These values **must never be titled** `Yemen reachability`, `AS12486 reachabilit
 - Result history source API: https://atlas.ripe.net/docs/apis/rest-api-manual/measurements/results-and-latest/
 - **Original IODA 2020 native BGP and ping-slash24 series remain uncollected.** No public substitute may be mislabeled IODA original.
 
+
+### Historical-origin-prefix exhaustive public ping search (additional negative test)
+We also searched RIPE Atlas by **all 109 original 2020 RRC00 AS30873 origin candidate prefixes**, avoiding the weaknesses of current `target_asn` indexing. All 109 public per-prefix catalog requests returned without API errors; they collectively disclosed **112 unique candidate ping measurement IDs**. We queried the actual original archived ping result endpoint for **all 112** IDs for 8–12 January 2020 and **none returned observations in that window**. Source-native logged test: https://github.com/EZZALDEEN049/falcon-yemen-resilience/actions/runs/40331800608; script `tools/find_2020_public_atlas_for_original_as30873_prefixes.py`.
+
+**Precise scope of this negative evidence:** each queried prefix catalog was limited to its first **80** entries (pagination not exhausted), the input included only **109 historically discovered RRC00 prefixes**, the indexing semantics can omit other measured targets and 2020 AS assignments, and only published public RIPE Atlas tests were checked. Thus we cannot assert no other 2020 active measurements exist; we can assert these **112 specific public measurements** returned none for the chosen window.
+
 ## No-email, scientifically defensible use
 1. **Primary control plane (original)**: six native Jan 2020 RIPE RIS RIB snapshots from RRC00/01/10, with replicated immediate-AS_PATH-neighbor shift for AS30873 from AS15412 to AS174. RRC00 192 genuine 5-minute A/W files fully replayed and matched authenticated next RIB, per repository evidence manifests.
 2. **Limited independent active example (original)**: RIPE Atlas ping measurement 8307351 of one target in catalog-AS12486, five days, 7 probing IDs, daily counts above. No claim that this dataset represents AS30873 functional connectivity; the observed near-complete response is consistent with one reachable test target only.
