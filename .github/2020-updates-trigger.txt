@@ -1,1 +1,2 @@
 2026-10-26 sample native 2020 RIPE RIS A/W updates, preserving unfiltered withdrawals
+native sample test after workflow registration
