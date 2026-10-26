@@ -1,0 +1,1 @@
+2026-10-26 preserve all 192 original source SHA256 and window counts to research repository
