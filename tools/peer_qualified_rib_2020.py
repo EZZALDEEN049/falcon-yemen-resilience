@@ -10,17 +10,19 @@ IMPORTANT:
   visibility; it is not cable-causal reachability, withdrawal count or traffic.
 """
 from collections import Counter,defaultdict
-import gzip,hashlib,json,statistics,subprocess,sys
+import gzip,hashlib,json,os,statistics,subprocess,sys
 from pathlib import Path
 from pybgpkit_parser import Parser
 
-OUT=Path("_artifacts/2020_ripe_peer_coverage"); OUT.mkdir(parents=True,exist_ok=True)
+RRC=os.environ.get("FALCON_RRC","rrc00")
+if RRC not in {"rrc00","rrc01","rrc10"}:raise RuntimeError("Unsupported research collector")
+OUT=Path("_artifacts")/f"2020_ripe_peer_coverage_{RRC}"; OUT.mkdir(parents=True,exist_ok=True)
 FILES=[
     ("2020-01-09T08:00:00Z","bview.20200109.0800.gz"),
     ("2020-01-10T00:00:00Z","bview.20200110.0000.gz"),
 ]
 ASNS=(12486,30873)
-ROOT="https://data.ris.ripe.net/rrc00/2020.01/"
+ROOT=f"https://data.ris.ripe.net/{RRC}/2020.01/"
 MAX_GZ=1500000000
 
 def acquire(filename):
@@ -149,12 +151,12 @@ def assess(first,second,asn):
         "First snapshot not independently confirmed pre-cable-failure",
         "No A/W update replay; reason for route absence (withdrawal, origin change, local policy) not established",
         "Peer seen in both RIB snapshots does not prove continuous operation between snapshots",
-        "Only RIPE RRC00 collector, not a full nationally representative sample",
+        "Only one RIPE RRC collector per run, not a full nationally representative sample",
         "No inference about actual path taken by customer packets, traffic, or physical cable backup"
       ]
     }
     return result
-manifest={"measurement":"RIPE RIS RRC00 two full historical MRT RIB snapshots, peer-liveness-qualified target-origin audit (not IODA)",
+manifest={"measurement":"RIPE RIS collector-specific two full historical MRT RIB snapshots, peer-liveness-qualified target-origin audit (not IODA)","collector":RRC,
 "status":"NOT_COMPLETED","snapshots":[],"results":[]}
 try:
     snapshots=[]
