@@ -11,14 +11,21 @@ from pathlib import Path
 from pybgpkit_parser import Parser
 OUT=Path("_artifacts/2020_historical_prefix_update_sample");OUT.mkdir(parents=True,exist_ok=True)
 BASE="https://data.ris.ripe.net/rrc00/2020.01/"
-NAMES=[
- "updates.20200109.0855.gz",
- "updates.20200109.1755.gz",
- "updates.20200109.1800.gz",
- "updates.20200109.1805.gz",
- "updates.20200109.1810.gz",
- "updates.20200109.1815.gz"
-]
+WINDOWS={
+ "pre_decline_reference":("2020-01-09T07:00:00Z","2020-01-09T09:00:00Z"),
+ "reported_acute_window":("2020-01-09T17:00:00Z","2020-01-09T19:00:00Z")
+}
+NAMES=[]
+FILE_TO_WINDOW={}
+for label,(begin,end) in WINDOWS.items():
+ start=dt.datetime.fromisoformat(begin.replace("Z","+00:00"))
+ finish=dt.datetime.fromisoformat(end.replace("Z","+00:00"))
+ current=start
+ while current<finish:
+  fn=f"updates.{current:%Y%m%d.%H%M}.gz"
+  NAMES.append(fn); FILE_TO_WINDOW[fn]=label
+  current+=dt.timedelta(minutes=5)
+if len(NAMES)!=48:raise AssertionError("Two complete 2h windows expected: 48 five-minute sources")
 prefixsets={}
 for asn in ("30873","12486"):
  p=Path("_tmp")/asn/"candidate_historical_prefixes_2020.txt"
@@ -31,8 +38,9 @@ report={
  "asns":{a:{"candidate_prefixes":len(pfx)} for a,pfx in prefixsets.items()},
  "candidate_prefixes_union":len(universe),
  "status":"INCOMPLETE",
+ "windows":WINDOWS,
  "source_inventory":"2020-01-09T08:00 UTC RRC00 origin RIB discovery files, not exhaustive AS inventory",
- "notes":["W messages lack origin AS and may involve non-target-origin paths","Only 6 five-minute time bins inspected","Global event-time update counts cannot be interpreted as cable-caused changes","No continuous BGP state reconstruction or p-values"],
+ "notes":["W messages lack origin AS and may involve non-target-origin paths","Two separate 2-hour windows inspected; eight hours between them intentionally NOT included","Global event-time update counts cannot be interpreted as cable-caused changes","No continuous BGP state reconstruction or p-values"],
  "records":[]
 }
 def fetch(name):
@@ -63,12 +71,19 @@ def analyze(item):
     else:counts[asn]["candidate_prefix_A_other_or_ambiguous_origin"]+=1
    if len(samples)<4:
     samples.append({"ts_unix":t,"kind":kind,"prefix":pfx,"asn_origin_known_for_announcement":sorted(origs) if kind=="announcement" else []})
- return dict(src,filter_matched_elements=dict(tot),per_asn={a:dict(c) for a,c in counts.items()},examples=samples)
+ return dict(src,window=FILE_TO_WINDOW[src["name"]],filter_matched_elements=dict(tot),per_asn={a:dict(c) for a,c in counts.items()},examples=samples)
 try:
  with concurrent.futures.ThreadPoolExecutor(max_workers=4) as pool:items=list(pool.map(fetch,NAMES))
  for item in items:
   row=analyze(item);report["records"].append(row)
   print(json.dumps({"file":row["name"],"matched":row["filter_matched_elements"],"per_asn":row["per_asn"]}),flush=True)
+ report["window_summary"]={}
+ for label in WINDOWS:
+  selected=[row for row in report["records"] if row["window"]==label]
+  counts={asn:Counter() for asn in prefixsets}
+  for row in selected:
+   for asn,metrics in row["per_asn"].items():counts[asn].update(metrics)
+  report["window_summary"][label]={"complete_intervals":len(selected),"candidate_prefix_updates":{a:dict(v) for a,v in counts.items()}}
  report["status"]="SOURCE_ORIGINAL_MRT_SAMPLE_VALIDATED_NOT_REPLAY" if len(report["records"])==len(NAMES) else "INCOMPLETE"
 finally:
  (OUT/"audit.json").write_text(json.dumps(report,indent=2),encoding="utf8")
