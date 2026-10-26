@@ -1,5 +1,8 @@
 name: Historical Update Sample Test
 on:
+  push:
+    branches: [main]
+    paths: ['.github/2020-updates-trigger.txt']
   workflow_dispatch:
 permissions:
   contents: read
