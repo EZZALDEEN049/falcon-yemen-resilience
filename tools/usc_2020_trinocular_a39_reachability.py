@@ -112,7 +112,7 @@ def one_status(intervals,t):
     if not active:return "no_data"
     if len(active)>1:return "uncertain"
     start,end,unc,state=active[0]
-    if t-start<=unc or end-t<=unc:return "uncertain"
+    if unc>0 and (t-start<=unc or end-t<=unc):return "uncertain"
     return {1:"up",0:"down",-1:"unmeasurable",-2:"gone_dark"}[state]
 
 def analyze(downup_path,map_path,start,end,step_minutes=15,pre_t=None):
