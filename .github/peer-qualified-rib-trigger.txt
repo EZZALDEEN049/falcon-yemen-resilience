@@ -1,1 +1,2 @@
 2026-10-26: verify independent all-prefix peer coverage for 2020 matched RIS collector sessions.
+2026-10-26 provider AS transitions and peer/prefix weighted path change
