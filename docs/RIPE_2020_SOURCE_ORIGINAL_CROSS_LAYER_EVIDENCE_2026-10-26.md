@@ -35,6 +35,28 @@ This is **not** the IODA BGP metric, active probing, independently sampled route
 
 Thousands of peer–prefix route observations are correlated. These ratios are descriptive, not confidence intervals or 6,220 independent experiments; peers visible at both endpoints need not remain active throughout the entire window. Immediate-upstream inference from an AS path is **not** evidence of a physical submarine-cable route or the actual packet-forwarding path.
 
+## Substantial original AS_PATH finding: AS30873's immediate neighbor ASN
+
+A second full peer-liveness-qualified execution, independently replaying both original RIB snapshots, shows that among **6,220 same-peer same-prefix route observations with unchanged origin AS30873**, the ASN immediately before 30873 in the observed `AS_PATH` changed as follows:
+
+| Immediate AS_PATH neighbor | 9 Jan 08:00 UTC | 10 Jan 00:00 UTC |
+| --- | ---: | ---: |
+| AS15412 | **2,793** | **0** |
+| AS174 | 2,063 | **6,220** |
+| AS3491 | 729 | 0 |
+| AS8529 | 635 | 0 |
+
+- **2,793** observed `AS15412 → AS174` neighbor transitions on matched peer-prefix-origin routes.
+- **729** observed `AS3491 → AS174` and **635** `AS8529 → AS174` transitions.
+- **2,063** already showed `AS174 → AS174` unchanged across checkpoints.
+- **79 of 105** shared prefixes had at least one observed neighbor ASN change, **100 of 110** independently covered matched peer sessions had at least one neighbor change.
+- AS30873 peer-equal-weight median fraction of changed matched observations: **69.07%**. Prefix-equal-weight median fraction: **96.67%** (interpret with strong within-prefix clustering; these are descriptive distributions).
+- AS12486 is strikingly different: adjacent AS15412 appeared in **302 of 366** matched observations at first checkpoint and **279 of 366** second; only **23 of 366** matched observations changed, including **12 AS15412→AS197206** and **11 AS15412→AS6762**. Peer-equal-weight median fraction of changed observations: **0%**.
+
+**Interpretation guardrails:** AS_PATH neighbor is an observation about control-plane topology, not a verified contractual upstream, physical fiber route, actual data traffic, user connectivity or causal mechanism. These are peer-prefix repeated observations (non-independent); the matched set may not represent all announcements from either ASN. An outage report published contemporaneously mentions AS15412 upstream loss, and this source-original route result is consistent with the reported rerouting **without independently proving the cable failure caused each observed path change**.
+
+Validated re-run: https://github.com/EZZALDEEN049/falcon-yemen-resilience/actions/runs/40248087605, `tools/peer_qualified_rib_2020.py`. Numeric source checksums and complete original-RIB methodology included in archived job artifact.
+
 ## Original MRT A/W update records — provenance test
 - Downloaded and verified six original 5-minute RRC00 `updates` files in a separate trial (08:55 and 17:55–18:15 UTC), each gzip CRC plus SHA256.
 - 48 original 5-minute update files passed an expanded scope test covering **07:00–09:00 UTC** (24 consecutive files) and **17:00–19:00 UTC** (24 consecutive files) on Jan 9. The eight-hour gap between these two windows is **not covered** by this test. Scope uses 109 AS30873 + seven AS12486 prefixes discovered by a Jan 9 RRC00 historical RIB; **not an exhaustive national prefix universe**.
