@@ -1,1 +1,2 @@
 2026-10-26: original 2020 RRC00 prefix-scoped A/W update audit
+2026-10-26 broaden to 48 official 5-minute archive slices across baseline and acute windows
