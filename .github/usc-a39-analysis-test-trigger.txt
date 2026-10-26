@@ -1,1 +1,2 @@
 2026-10-26 validate code on synthetic sample only; no USC data obtained
+retest corrected zero-uncertainty endpoint semantics
