@@ -1,0 +1,24 @@
+name: Validate Source-Original 2020 RIPE Atlas Active Pings
+on:
+  push:
+    branches: [main]
+    paths: ['.github/atlas-2020-raw-ping-audit-trigger.txt']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python tools/ripe_atlas_2020_source_active_ping_audit.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: public-atlas-2020-source-original-daily-and-hourly-icmp-audit
+          path: _artifacts/atlas_2020_original_public_active_probe/
+          retention-days: 30
