@@ -1,0 +1,22 @@
+name: Historical Update Sample Test
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install pybgpkit-parser
+      - run: python tools/ripe_2020_updates_available.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: 2020-rrc00-updates-validity
+          path: _artifacts/2020_mrt_update_interval_test/
+          retention-days: 30
