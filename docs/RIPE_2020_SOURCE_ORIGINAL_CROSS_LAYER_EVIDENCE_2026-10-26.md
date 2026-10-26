@@ -16,7 +16,7 @@ Source BGP snapshots:
 
 ### Strict same-peer, same-prefix, same-origin observations
 
-Define the source-specific two-snapshot retention ratio for AS `a`:
+Define the source-specific two-snapshot retention ratio for AS `a`, counting peer-prefix observations rather than independently sampled networks:
 
 \[ R_a = \frac{\#\{(peer,prefix):\ \\mathrm{origin}_{t0}=a\ \land\ \mathrm{origin}_{t1}=a\ \land\ peer\ observed\ at\ t1\}}{\#\{(peer,prefix):\ \\mathrm{origin}_{t0}=a\ \land\ peer\ observed\ at\ t1\}} \]
 
@@ -40,7 +40,7 @@ Thousands of peer–prefix route observations are correlated. These ratios are d
 - 48 original 5-minute update files passed an expanded scope test covering **07:00–09:00 UTC** (24 consecutive files) and **17:00–19:00 UTC** (24 consecutive files) on Jan 9. The eight-hour gap between these two windows is **not covered** by this test. Scope uses 109 AS30873 + seven AS12486 prefixes discovered by a Jan 9 RRC00 historical RIB; **not an exhaustive national prefix universe**.
 - Run https://github.com/EZZALDEEN049/falcon-yemen-resilience/actions/runs/40248133135; script `tools/ripe_2020_historical_candidate_update_sample.py`.
 - 07–09 UTC original source announcements: AS30873-origin candidate prefixes **1,623**, AS12486 **110**; no candidate-prefix W.
-- 17–19 UTC: AS30873 **572** announcements, AS12486 **237**; **three** withdrawn candidate prefixes of AS12486 and **zero** withdrawn candidate prefixes of AS30873. Every BGP withdrawal record is inherently *origin-unspecified*: the same prefix may have been announced from another origin; the record must not be automatically assigned to AS12486 as withdrawn origin.
+- 17–19 UTC: AS30873 **572** announcements, AS12486 **237**; **three withdrawal observations involving** candidate prefixes of AS12486 and **zero** withdrawal observations involving candidate prefixes of AS30873. Every BGP withdrawal record is inherently *origin-unspecified*: the same prefix may have been announced from another origin; the record must not be automatically assigned to AS12486 as withdrawn origin.
 - The 48-file observation covers two separate fixed intervals only; it cannot establish continuous changes between those windows, an event-window-wide absence of withdrawals, or source-original 2020 IODA reachability values.
 
 ## Manuscript-safe conclusions
