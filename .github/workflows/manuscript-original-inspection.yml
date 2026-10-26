@@ -18,5 +18,7 @@ jobs:
         if: always()
         with:
           name: source-manuscript-structure-audit
-          path: manuscript_structure_audit.txt
+          path: |
+            manuscript_structure_audit.txt
+            paper/Manuscript_2026-10-24_Evidence_Status_Updated.docx
           retention-days: 7
