@@ -88,4 +88,4 @@ try:
 finally:
  EVENTS.close()
  (OUT/"audit.json").write_text(json.dumps(report,indent=2),encoding="utf8")
-if report["status"]!="SOURCE_ORIGINAL_MRT_SAMPLE_VALIDATED_NOT_REPLAY":sys.exit("not all 2020 5min windows validated")
+if report["status"]!="SOURCE_ORIGINAL_MRT_AW_EVENTS_EXPORTED_NOT_REPLAYED":sys.exit("not all 2020 5min windows validated")
