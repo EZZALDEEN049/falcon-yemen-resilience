@@ -61,7 +61,7 @@ def analyze(item):
    else:raise RuntimeError("unsupported update type "+typ)
    if not (peer_ip and peer_asn and pfx):raise RuntimeError("missing peer identity")
    origs={int(x) for x in (origins or [])}
-   EVENTS.write(json.dumps([t,kind,int(peer_asn),str(peer_ip),str(pfx),sorted(origs),str(as_path or "")],separators=(",",":"))+"\\n")
+   EVENTS.write(json.dumps([t,kind,int(peer_asn),str(peer_ip),str(pfx),sorted(origs),str(as_path or "")],separators=(",",":"))+"\n")
    tot[kind]+=1
    for asn,prefixes in prefixsets.items():
     if pfx not in prefixes:continue
