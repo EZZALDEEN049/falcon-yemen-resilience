@@ -90,12 +90,24 @@ def assess(first,second,asn):
         if key in retained:by_peer[peer][1]+=1
     ratios=[b/a for a,b in by_peer.values()]
     upstream_pairs=[]
+    provider_transitions=Counter()
+    upstream_pre=Counter();upstream_post=Counter()
+    peer_changes=defaultdict(lambda:[0,0]);prefix_changes=defaultdict(lambda:[0,0])
     missing_aspaths=0
     for k in retained:
         p1=immediate_upstream(pre[k],asn)
         p2=immediate_upstream(post[k],asn)
         if p1 is None or p2 is None:missing_aspaths+=1
-        else:upstream_pairs.append((p1,p2))
+        else:
+            upstream_pairs.append((p1,p2))
+            provider_transitions[(p1,p2)]+=1
+            upstream_pre[p1]+=1
+            upstream_post[p2]+=1
+            peer_changes[k[:2]][0]+=1
+            prefix_changes[k[2]][0]+=1
+            if p1!=p2:
+                peer_changes[k[:2]][1]+=1
+                prefix_changes[k[2]][1]+=1
     result={
       "asn":asn,
       "two_snapshot_target_origin_rows":{"first":len(pre),"second":len(post)},
@@ -119,7 +131,19 @@ def assess(first,second,asn):
         "common_target_origin_routes_with_parsable_immediate_upstream":len(upstream_pairs),
         "changed":sum(a!=b for a,b in upstream_pairs),
         "fraction":(sum(a!=b for a,b in upstream_pairs)/len(upstream_pairs) if upstream_pairs else None),
-        "unparseable_common_routes":missing_aspaths},
+        "unparseable_common_routes":missing_aspaths,
+        "adjacent_upstream_most_common_before":upstream_pre.most_common(12),
+        "adjacent_upstream_most_common_after":upstream_post.most_common(12),
+        "top_upstream_transitions":[{"from_asn":k[0],"to_asn":k[1],"route_observations":v} for k,v in provider_transitions.most_common(14)],
+        "adjacent_AS15412_route_observations_before":upstream_pre.get("15412",0),
+        "adjacent_AS15412_route_observations_after":upstream_post.get("15412",0),
+        "distinct_prefixes_with_parsable_upstream":len(prefix_changes),
+        "distinct_prefixes_with_any_neighbor_change":sum(y>0 for x,y in prefix_changes.values()),
+        "distinct_peer_sessions_with_parsable_upstream":len(peer_changes),
+        "distinct_peer_sessions_with_any_neighbor_change":sum(y>0 for x,y in peer_changes.values()),
+        "peer_equal_weight_median_upstream_change_fraction":statistics.median([y/x for x,y in peer_changes.values()]) if peer_changes else None,
+        "prefix_equal_weight_median_upstream_change_fraction":statistics.median([y/x for x,y in prefix_changes.values()]) if prefix_changes else None,
+        "counting_caveat":"Route-observation transitions share prefixes, collectors, and upstreams; never claim independent samples or causal attribution."},
       "scope_limits":[
         "Not comparable to IODA /24-visible signal percentages",
         "First snapshot not independently confirmed pre-cable-failure",
