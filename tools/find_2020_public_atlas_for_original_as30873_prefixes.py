@@ -38,9 +38,8 @@ for msm,(prefix,m) in mids.items():
  if isinstance(m["start_time"],(int,float)) and m["start_time"]>B:continue
  # Stop time null is not interpreted as continuously operating.
  hits.append((msm,prefix,m))
-tested=[]
-# Bound raw reads to 35 likely candidates; prefer 2019 and earlier start measurements.
-for msm,pfx,meta in sorted(hits,key=lambda x:(x[2].get("start_time") or 0,x[0]))[:35]:
+def historical_test(item):
+ msm,pfx,meta=item
  url=f"{ROOT}{msm}/results/?"+urllib.parse.urlencode({"start":A,"stop":B-1})
  r={"id":msm,"historical_prefix":pfx,"catalog_target":meta.get("target_ip"),"catalog_asn":meta.get("target_asn_catalog"),"url":url}
  try:
@@ -49,8 +48,13 @@ for msm,pfx,meta in sorted(hits,key=lambda x:(x[2].get("start_time") or 0,x[0]))
   values=[x for x in obj if A<=x.get("timestamp",0)<B]
   r.update(original_source_sha256=sha,actual_2020_ping_results=len(values),probes=len({x.get("prb_id") for x in values}),responded=sum(1 for x in values if isinstance(x.get("rcvd"),int) and x["rcvd"]>0),without_reply=sum(1 for x in values if x.get("rcvd")==0))
  except Exception as e:r["error"]=repr(e)
- tested.append(r)
+ return r
+# Scan ALL indexed measurement IDs, avoiding a false "none exists" conclusion
+# after merely 35 older measurements.
+with concurrent.futures.ThreadPoolExecutor(max_workers=6) as ex:
+ tested=list(ex.map(historical_test, sorted(hits,key=lambda x:(x[2].get("start_time") or 0,x[0]))))
+for r in tested:
  if r.get("actual_2020_ping_results",0):print(json.dumps({"FOUND_2020_PING":r}),flush=True)
 errors=[x for x in rows if x.get("error")]
 print(json.dumps({"prefixes_checked":len(rows),"catalog_errors":len(errors),"unique_measurements_found":len(mids),"historical_ping_measurements_tested":len(tested),"confirmed_actual_2020_measurements":sum(1 for z in tested if z.get("actual_2020_ping_results",0))}),flush=True)
-(O/"audit.json").write_text(json.dumps({"status":"SOURCE_ORIGINAL_ATLAS_PREFIX_TARGET_DISCOVERY_ONLY","historical_prefixes":len(PREFIXES),"catalog_errors":errors,"prefix_catalog":rows,"actual_2020_ping_tests":tested,"limits":["Only first 80 catalog measurements per historical prefix","At most 35 returned candidate measurement IDs tested for 2020 actual results","Atlas target list is not complete coverage nor IODA native signal archive","Historic AS origin of individual target IP should be independently rechecked"]},indent=2))
+(O/"audit.json").write_text(json.dumps({"status":"SOURCE_ORIGINAL_ATLAS_PREFIX_TARGET_DISCOVERY_ONLY","historical_prefixes":len(PREFIXES),"catalog_errors":errors,"prefix_catalog":rows,"actual_2020_ping_tests":tested,"limits":["Only first 80 catalog measurements per historical prefix","All returned candidate IDs tested for 2020 actual results; first 80 catalog rows per prefix only","Atlas target list is not complete coverage nor IODA native signal archive","Historic AS origin of individual target IP should be independently rechecked"]},indent=2))
