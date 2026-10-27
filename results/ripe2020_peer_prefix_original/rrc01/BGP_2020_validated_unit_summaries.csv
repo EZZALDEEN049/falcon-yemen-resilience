@@ -1,0 +1,3 @@
+collector,target_as,initial_rows,excluded_peer_absent,eligible,retained,not_retained,changed,comparable,peer_prefix_changed_pct,prefix_count,prefix_any_changed,prefix_equal_mean_pct,prefix_equal_median_pct,peer_count,peer_any_changed,peer_equal_mean_pct,peer_equal_median_pct
+rrc01,12486,179,7,172,148,24,6,148,4.054054054054054,6,2,3.948717948717949,0.0,26,5,3.8461538461538463,0.0
+rrc01,30873,2691,109,2582,2180,402,1482,2180,67.98165137614679,105,79,68.04177109440268,100.0,40,38,74.19455143055717,69.0721649484536
