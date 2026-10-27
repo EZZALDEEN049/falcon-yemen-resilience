@@ -1,0 +1,82 @@
+{
+  "article": "https://internetdisruption.report/2020/02/23/internet-disruption-report-january-2020/",
+  "event": "January 9, 2020",
+  "kind": "publisher_raster_retrieval_and_calibration_only",
+  "run_utc": "2026-10-27T23:14:52.943384+00:00",
+  "results": {
+    "AS30873": {
+      "reported_article_caption": "AS30873",
+      "publisher_filename": "jan-910-yemen-as30783-ioda.png",
+      "attempts": [
+        {
+          "url": "https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-as30783-ioda.png",
+          "http_status": 200,
+          "content_type": "image/png",
+          "redirect_target": "https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-as30783-ioda.png",
+          "bytes": 96032,
+          "sha256": "229b9ed3e0e169c78331b7e50f0a2af9f47f88c3d0b73d0524db633d14977efd",
+          "image_file": "AS30873__0.png",
+          "width": 1840,
+          "height": 874,
+          "format": "PNG",
+          "calibration_as_given_in_old_bundle": {
+            "x_min": 112,
+            "x_max": 1779,
+            "y_top": 240,
+            "y_zero": 632,
+            "pixels_per_unit": 252
+          },
+          "exact_RGB_hit_counts": {
+            "active": 6062,
+            "bgp": 1668
+          },
+          "x_columns_with_line": {
+            "active": 1661,
+            "bgp": 1661
+          },
+          "status": "PASS_CALIBRATION_PIXEL_GEOMETRY_ONLY"
+        }
+      ],
+      "warning": "Publisher name as30783 differs from article caption AS30873; this is not proof of wrong plotted AS.",
+      "final_gate": "RASTER_GEOMETRY_PASS_PROVENANCE_SOURCE_URL_LOGGED",
+      "image_available": true
+    },
+    "AS12486": {
+      "reported_article_caption": "AS12486",
+      "publisher_filename": "jan-910-yemen-as12486-ioda.png",
+      "attempts": [
+        {
+          "url": "https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-as12486-ioda.png",
+          "http_status": 200,
+          "content_type": "image/png",
+          "redirect_target": "https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-as12486-ioda.png",
+          "bytes": 80672,
+          "sha256": "fb4be5c7d169a659a1b7f5c207eb56c5390d20faaf60705dc0d34610466a612c",
+          "image_file": "AS12486__0.png",
+          "width": 1840,
+          "height": 874,
+          "format": "PNG",
+          "calibration_as_given_in_old_bundle": {
+            "x_min": 112,
+            "x_max": 1779,
+            "y_top": 240,
+            "y_zero": 632,
+            "pixels_per_unit": 252
+          },
+          "exact_RGB_hit_counts": {
+            "active": 7306,
+            "bgp": 1668
+          },
+          "x_columns_with_line": {
+            "active": 1617,
+            "bgp": 1668
+          },
+          "status": "PASS_CALIBRATION_PIXEL_GEOMETRY_ONLY"
+        }
+      ],
+      "final_gate": "RASTER_GEOMETRY_PASS_PROVENANCE_SOURCE_URL_LOGGED",
+      "image_available": true
+    }
+  },
+  "raw_ioda2020_recovered": false
+}
