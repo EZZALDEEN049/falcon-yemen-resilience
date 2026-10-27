@@ -2,7 +2,8 @@
   "article": "https://internetdisruption.report/2020/02/23/internet-disruption-report-january-2020/",
   "event": "January 9, 2020",
   "kind": "publisher_raster_retrieval_and_calibration_only",
-  "run_utc": "2026-10-27T23:14:52.943384+00:00",
+  "run_utc": "2026-10-27T23:15:50.517343+00:00",
+  "github_run_id": "40600891192",
   "results": {
     "AS30873": {
       "reported_article_caption": "AS30873",
