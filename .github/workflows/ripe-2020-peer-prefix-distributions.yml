@@ -1,0 +1,70 @@
+name: Recover original 2020 RIPE peer-prefix distributions
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ripe-2020-peer-prefix-distributions.yml'
+      - 'tools/ripe2020_peer_prefix_source_native_final.py'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  extract:
+    strategy:
+      fail-fast: false
+      matrix:
+        collector: [rrc00, rrc01, rrc10]
+    runs-on: ubuntu-latest
+    timeout-minutes: 50
+    env:
+      FALCON_RRC: ${{ matrix.collector }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install source MRT parser
+        run: python -m pip install --disable-pip-version-check pybgpkit-parser
+      - name: Retrieve six original RIB sources and export peer-prefix rows with SHA gates
+        run: python tools/ripe2020_peer_prefix_source_native_final.py
+      - name: Upload auditable original-source output
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: peer-prefix-2020-${{ matrix.collector }}-${{ github.run_id }}
+          path: _artifacts/2020_ripe_peer_coverage_${{ matrix.collector }}
+          if-no-files-found: warn
+          retention-days: 30
+  publish:
+    needs: extract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: peer-prefix-2020-*
+          path: tmp_collector_outputs
+      - name: Assemble independent-review output
+        run: |
+          mkdir -p results/ripe2020_peer_prefix_original
+          for collector in rrc00 rrc01 rrc10; do
+            dir=$(find tmp_collector_outputs -type d -name "*$collector*" -print -quit)
+            test -n "$dir"
+            test -f "$dir/individual_output_status.json"
+            grep -q SOURCE_ORIGINAL_COMPLETE_SIX_METRICS_MATCHED "$dir/individual_output_status.json"
+            mkdir -p "results/ripe2020_peer_prefix_original/$collector"
+            cp "$dir"/BGP_2020_*.csv "$dir"/audit.json "$dir"/individual_output_status.json "results/ripe2020_peer_prefix_original/$collector/"
+          done
+      - name: Preserve outputs in audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ripe2020-peer-prefix-all-collectors-${{ github.run_id }}
+          path: results/ripe2020_peer_prefix_original
+          retention-days: 30
+      - name: Commit reviewer outputs to private research repository
+        continue-on-error: true
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add results/ripe2020_peer_prefix_original
+          git diff --cached --quiet || (git commit -m "Archive six source-native RIPE 2020 peer-prefix audit distributions" && git push origin HEAD:main)
