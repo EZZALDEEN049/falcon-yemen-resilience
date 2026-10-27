@@ -38,7 +38,7 @@ def inspect(path):
   return results
 report={"article":"https://internetdisruption.report/2020/02/23/internet-disruption-report-january-2020/",
  "event":"January 9, 2020","kind":"publisher_raster_retrieval_and_calibration_only",
- "run_utc":dt.datetime.now(dt.timezone.utc).isoformat(),"results":{},"raw_ioda2020_recovered":False}
+ "run_utc":dt.datetime.now(dt.timezone.utc).isoformat(),"github_run_id":os.getenv("GITHUB_RUN_ID"),"results":{},"raw_ioda2020_recovered":False}
 for asn,file in SOURCES.items():
   result={"reported_article_caption":asn,"publisher_filename":file,"attempts":[]}
   if asn=="AS30873":result["warning"]="Publisher name as30783 differs from article caption AS30873; this is not proof of wrong plotted AS."
