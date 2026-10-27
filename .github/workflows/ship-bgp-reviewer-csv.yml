@@ -1,0 +1,53 @@
+name: Reviewer-ready frozen original BGP CSV bundle
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/ship-bgp-reviewer-csv.yml']
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify actual three collector CSV exports
+        run: |
+          python - <<'PY'
+          import csv,json,hashlib,pathlib
+          root=pathlib.Path('results/ripe2020_peer_prefix_original')
+          counts={}
+          for name in ('rrc00','rrc01','rrc10'):
+              d=root/name
+              assert d.is_dir()
+              for fn in ('BGP_2020_peer_prefix_records.csv','BGP_2020_prefix_distributions.csv','BGP_2020_peer_distributions.csv','BGP_2020_validated_unit_summaries.csv','audit.json','individual_output_status.json'):
+                  assert (d/fn).is_file(),str(d/fn)
+              with open(d/'BGP_2020_peer_prefix_records.csv') as f:
+                  counts[name]=sum(1 for _ in csv.DictReader(f))
+              status=json.loads((d/'individual_output_status.json').read_text())
+              assert status['status']=='SOURCE_ORIGINAL_COMPLETE_SIX_METRICS_MATCHED'
+              assert status['rows']==counts[name]
+          assert counts=={'rrc00':7039,'rrc01':2870,'rrc10':1510}, counts
+          print('Verified 11419 original-source first-checkpoint rows',counts)
+          PY
+      - name: Generate manifest with per-file SHA-256 and immutable source commit
+        run: |
+          python - <<'PY'
+          import hashlib,json,pathlib,os
+          root=pathlib.Path('results/ripe2020_peer_prefix_original')
+          entries=[{'path':str(p.relative_to(root)),'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size} for p in sorted(root.rglob('*')) if p.is_file()]
+          (root/'REVIEWER_MANIFEST.json').write_text(json.dumps({'source_commit':'907b59027807ab292d33886d36e65e2bb07f63c6','verified_rows_total':11419,'files':entries},indent=2)+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: frozen-2020-bgp-source-individual-records
+          path: results/ripe2020_peer_prefix_original/
+          retention-days: 30
+      - name: Save workflow run ID to repository for deterministic archive retrieval
+        run: |
+          mkdir -p results/reviewer_handoff
+          printf '{"run_id":%s,"artifact":"frozen-2020-bgp-source-individual-records","source_commit":"907b59027807ab292d33886d36e65e2bb07f63c6"}\n' "$GITHUB_RUN_ID" >results/reviewer_handoff/frozen_bgp_artifact_run.json
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add results/reviewer_handoff/frozen_bgp_artifact_run.json
+          git diff --cached --quiet || (git commit -m "Index reviewer frozen BGP audit artifact by workflow run ID" && git push origin HEAD:main)
