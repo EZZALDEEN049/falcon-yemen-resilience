@@ -9,7 +9,20 @@ on:
 permissions:
   contents: write
 jobs:
+  announce:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Index this reference-window run ID for reproducible diagnostics
+        run: |
+          mkdir -p results/ripe2020_reference_20200102
+          printf '{"run_id":%s,"status":"STARTED_NOT_VALIDATED","window":["2020-01-02T08:00:00Z","2020-01-03T00:00:00Z"],"collectors":["rrc00","rrc01","rrc10"]}\n' "$GITHUB_RUN_ID" > results/ripe2020_reference_20200102/PROCESSING_STATUS.json
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add results/ripe2020_reference_20200102/PROCESSING_STATUS.json
+          git diff --cached --quiet || (git commit -m "Record predeclared BGP reference extraction CI run identifier" && git push origin HEAD:main)
   baseline:
+    needs: announce
     strategy:
       fail-fast: false
       matrix:
@@ -23,6 +36,8 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Check extracted baseline script syntax before large source downloads
+        run: python -m py_compile tools/ripe2020_non_event_20200102_20200103.py
       - run: python -m pip install pybgpkit-parser
       - name: Download 2 original historical RIBs, validate gzip, capture hashes, export all observations
         run: python tools/ripe2020_non_event_20200102_20200103.py
