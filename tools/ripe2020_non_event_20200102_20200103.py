@@ -25,7 +25,8 @@ FILES=[
 ASNS=(12486,30873)
 ROOT=f"https://data.ris.ripe.net/{RRC}/2020.01/"
 MAX_GZ=1500000000
-# The Jan 2-3 reference window was chosen before inspecting its outcomes. Source SHA256 is recorded on original RIB download.\n\n
+# The Jan 2-3 reference window was chosen before inspecting its outcomes. Source SHA256 is recorded on original RIB download.
+
 def acquire(filename):
     file=Path("/tmp")/filename
     url=ROOT+filename
@@ -227,7 +228,8 @@ def export_individual_and_unit_distributions(first, second, collector):
         "collector":collector,
         "first_timestamp":"2020-01-02T08:00:00Z","second_timestamp":"2020-01-03T00:00:00Z",
         "rows":len(detailed),"prefix_groups":len(per_prefix),"peer_groups":len(per_peer),
-        "expected_exact_numbers_compared":0,\n        "baseline_predeclared":"2020-01-02T08:00:00Z to 2020-01-03T00:00:00Z, 16 hours (one week before reported Jan 9 disruption)",
+        "expected_exact_numbers_compared":0,
+        "baseline_predeclared":"2020-01-02T08:00:00Z to 2020-01-03T00:00:00Z, 16 hours (one week before reported Jan 9 disruption)",
         "limitations":["two snapshots","selected origin networks",
           "peer seen at endpoints does not prove continuous uptime",
           "observations are dependent and not packet reachability"]},indent=2)+"\n")
