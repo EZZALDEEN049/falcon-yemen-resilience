@@ -1,3 +1,0 @@
-One-time owner-authorized cloud research run, 2026-10-23. Run IODA FALCON_2020 and historical BGP candidate discovery for AS30873 and AS12486; artifacts are not automatically valid scientific evidence.
-
-2026-10-24 rerun: IODA archive differential audit and BGP integrity guards.

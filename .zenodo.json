@@ -1,5 +1,5 @@
 {
-  "title": "FALCON Yemen 2020: BGP Research Software and Reproducibility Archive",
+  "title": "FALCON Yemen 2020: Research Software and Source Provenance (Curated Edition)",
   "upload_type": "software",
   "creators": [
     {
@@ -7,14 +7,12 @@
       "affiliation": "Faculty of Engineering and Information Technology, Taiz University, Taiz, Yemen"
     }
   ],
-  "description": "A versioned archive of the FALCON Yemen 2020 research repository, containing BGP measurement analysis code, source-derived RIPE RIS data exports, a January 2–3 non-event reference comparison, and reproducibility documentation. The latest internally reviewed package is located under releases/FALCON-v1.0-2026-10-29-reviewer/. Historical and superseded materials may also be present in this full repository snapshot. The archived materials support descriptive analyses; they do not establish direct causal attribution of BGP changes to physical cable failures or measure end-user connectivity.",
+  "description": "Curated research-software code and source URL/checksum provenance, excluding internal review records, manuscript drafts and third-party provider datasets. This archive alone does not contain all numerical outputs needed for full reproduction. License metadata must be approved and set before release.",
   "keywords": [
     "BGP",
     "RIPE RIS",
-    "Internet measurement",
-    "FALCON cable",
     "Yemen",
-    "network resilience",
-    "research reproducibility"
+    "internet measurement",
+    "reproducibility"
   ]
 }

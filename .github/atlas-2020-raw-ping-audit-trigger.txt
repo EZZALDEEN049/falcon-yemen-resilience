@@ -1,1 +1,0 @@
-2026-10-26 validate authentic original RIPE Atlas Jan 2020 ICMP ping results by probe and timestamp

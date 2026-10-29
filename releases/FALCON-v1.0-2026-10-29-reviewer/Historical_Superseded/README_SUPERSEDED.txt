@@ -1,1 +1,0 @@
-These preserved historical 28 October 2026 drafting/QA artifacts describe a preliminary NOT-YET-VERIFIED reference study. They were superseded by the source-verified six-RIB reference release on 28 October 2026 and by this editorial reconciliation of 29 October 2026. They are NOT current submission-status documents.
