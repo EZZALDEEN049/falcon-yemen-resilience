@@ -1,7 +1,8 @@
 cff-version: 1.2.0
-message: "Cite the exact DOI of the archived release if and when a rights-cleared Zenodo edition is published."
+message: "If you use this author-owned FALCON research software, cite its exact archived release DOI once published."
 title: "FALCON Yemen 2020: Research Software and Source Provenance"
 type: software
+license: MIT
 authors:
   - given-names: Ezzaldeen
     family-names: Al-Tayar
