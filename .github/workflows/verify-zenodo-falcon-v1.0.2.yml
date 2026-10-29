@@ -1,0 +1,48 @@
+name: Verify Zenodo ingestion for FALCON software v1.0.2
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/verify-zenodo-falcon-v1.0.2.yml']
+permissions:
+  contents: read
+jobs:
+  lookup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 7
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Query public Zenodo record API without credentials
+        run: |
+          python - <<'PY'
+          import urllib.request,urllib.parse,json,time
+          urls=[
+            'https://zenodo.org/api/records/23751733',
+            'https://zenodo.org/api/records/?'+urllib.parse.urlencode({'q':'FALCON Yemen 2020','size':100})
+          ]
+          found=[]
+          for attempt in range(5):
+            for url in urls:
+              try:
+                req=urllib.request.Request(url,headers={'User-Agent':'FALCON-metadata-source-audit/1.0','Accept':'application/json'})
+                with urllib.request.urlopen(req,timeout=22) as resp: d=json.load(resp)
+                hits=d.get('hits',{}).get('hits',[]) if isinstance(d.get('hits'),dict) else [d]
+                for rec in hits:
+                  md=rec.get('metadata',{})
+                  title=md.get('title',''); version=str(md.get('version',''))
+                  if 'FALCON' in title.upper() or 'FALCON' in title:
+                    doi=(rec.get('pids',{}).get('doi') or {}).get('identifier') or rec.get('doi')
+                    row={'record_id':rec.get('id'),'title':title,'version':version,'doi':doi}
+                    if row not in found: found.append(row)
+              except Exception as exc: print('zenodo_api_query_failed',str(exc)[:100])
+            target=[x for x in found if x['version'].startswith('1.0.2') and 'Software' in x['title'] and x['doi']]
+            if target:
+              print('PASS VERIFIED_ZENODO_SOFTWARE_1_0_2',json.dumps(target))
+              print('OTHER_RELATED_RECORDS',json.dumps(found[:20]))
+              break
+            if attempt<4: time.sleep(20)
+          else:
+            print('ZENODO_RECORD_NOT_VERIFIED_YET',json.dumps(found[:20]))
+            raise SystemExit(17)
+          PY
