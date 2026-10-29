@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use the research software or reproducibility materials in this repository, please cite this archived release."
+title: "FALCON Yemen 2020: BGP Research Software and Reproducibility Archive"
+type: software
+authors:
+  - given-names: Ezzaldeen
+    family-names: Al-Tayar
+    affiliation: "Faculty of Engineering and Information Technology, Taiz University, Taiz, Yemen"
+repository-code: "https://github.com/EZZALDEEN049/falcon-yemen-resilience"
+abstract: "Versioned research software and supporting reproducibility materials for network-specific BGP routing observations surrounding Yemen's January 2020 FALCON submarine-cable disruption. The repository includes a reviewed evidence package, historical non-event reference comparisons, and methodological limitations."
+keywords:
+  - BGP
+  - RIPE RIS
+  - Internet measurement
+  - submarine-cable disruption
+  - Yemen
+  - research reproducibility
