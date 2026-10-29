@@ -27,7 +27,8 @@ jobs:
           creators=md.get('creators',[])
           assert len(creators)==1 and 'Al-Tayar' in str(creators[0])
           licensing=md.get('rights',[]) or md.get('license')
-          entries=d.get('files',{}).get('entries',{})
+          fileobj=d.get('files',[]) 
+          entries=fileobj.get('entries',{}) if isinstance(fileobj,dict) else fileobj
           assets=[{'name':k,'size':v.get('size'),'checksum':v.get('checksum')} for k,v in entries.items()] if isinstance(entries,dict) else entries
           assert assets and any('zip' in str(a).lower() for a in assets),'no archived source zip visible'
           print('ZENODO_V1_0_2_VERIFIED',json.dumps({'record_id':d['id'],'title':title,'version':version,'doi':doi,'creators':creators,'license':licensing,'files':assets},default=str)[:4000])
