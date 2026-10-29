@@ -61,3 +61,4 @@ jobs:
           fi
           gh release create "$TAG" --target "$GITHUB_SHA" --title 'FALCON Yemen 2020 — Curated Research Software v1.0.2' --notes-file RELEASE_NOTES_v1.0.2.md --latest=false
           echo "Published tag: $TAG at verified SHA $GITHUB_SHA"
+# rerun after preserving all 9 source-file terminal newlines and SHA-256 fidelity
