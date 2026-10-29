@@ -1,0 +1,73 @@
+name: Archive exact FALCON 29-Oct reviewer bundle with SHA verification
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/falcon-final-reviewer-release-2026-10-29.yml'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  freeze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    env:
+      FALCON_BUNDLE_DOWNLOAD: 'https://sdmntprindiasocentral.oaiusercontent.com/files/00000000-4108-8211-945d-771a889cacd8/raw?se=2026-10-29T00%3A12%3A16Z&sp=r&sv=2026-02-06&sr=b&scid=3014c82a-8013-5699-af7b-a7dbbaa513fa&skoid=c094fe1e-1dc0-485a-8de0-10ab942be48f&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-28T11%3A07%3A10Z&ske=2026-10-29T11%3A07%3A10Z&sks=b&skv=2026-02-06&sig=aDC3VHK8LN48A8sHFkE0Y5sJwCtJnD%2BptrO8Djldeso%3D'
+      EXPECTED_SHA256: 'e053c8dfe565766ebea935c4728652bf89dfb232c5b1622fc297da93ee85e4b4'
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download frozen 29-Oct reviewer package and verify original bytes
+        run: |
+          curl -fSL --retry 3 --retry-delay 2 --connect-timeout 20 --max-time 350 "$FALCON_BUNDLE_DOWNLOAD" -o /tmp/FALCON_2026-10-29_PostReviewer_E1_E4_Package_Repaired.zip
+          echo "$EXPECTED_SHA256  /tmp/FALCON_2026-10-29_PostReviewer_E1_E4_Package_Repaired.zip" | sha256sum -c -
+          unzip -tqq /tmp/FALCON_2026-10-29_PostReviewer_E1_E4_Package_Repaired.zip
+      - name: Validate embedded 151-file manifest and extract all real source files
+        run: |
+          python - <<'PY'
+          from pathlib import Path, PurePosixPath
+          import zipfile,json,hashlib
+          src=Path('/tmp/FALCON_2026-10-29_PostReviewer_E1_E4_Package_Repaired.zip')
+          dst=Path('releases/FALCON-v1.0-2026-10-29-reviewer')
+          with zipfile.ZipFile(src) as z:
+              m=json.loads(z.read('FILES_MANIFEST_SHA256.json'))
+              records=m['files']
+              assert m['file_count']==151 and len(records)==151,(m['file_count'],len(records))
+              names=set(z.namelist())
+              assert len(names)==152
+              assert names == {r['path'] for r in records}|{'FILES_MANIFEST_SHA256.json'}
+              for row in records:
+                  name=row['path'];safe=PurePosixPath(name)
+                  assert not safe.is_absolute() and '..' not in safe.parts
+                  data=z.read(name)
+                  assert len(data)==row['bytes']
+                  assert hashlib.sha256(data).hexdigest()==row['sha256'],name
+              z.extractall(dst)
+          print('VERIFIED all',len(records),'release files, original ZIP SHA256 is checked separately')
+          PY
+      - name: Smoke test full event and non-event reproducibility programs
+        run: |
+          python -m compileall -q releases/FALCON-v1.0-2026-10-29-reviewer/Code
+          cd releases/FALCON-v1.0-2026-10-29-reviewer
+          python Code/verify_reviewer_bundle.py
+          python Code/compare_2020_event_vs_non_event.py --event-root Evidence/BGP_2020 --reference-root Evidence/Reference_2020_20200102 --output-dir /tmp/falcon_reference_recheck
+          python Code/rebuild_2020_peer_prefix.py --self-test
+      - name: Preserve exact extracted manuscript, supplement, code and evidence in GitHub history
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add releases/FALCON-v1.0-2026-10-29-reviewer/
+          if ! git diff --cached --quiet; then
+            git commit -m "Freeze exact SHA-verified FALCON 29 October 2026 reviewer package (151 files)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+      - name: Publish GitHub prerelease with intact original ZIP (E5 editorial gate remains OPEN)
+        run: |
+          TAG='FALCON-v1.0-2026-10-29'
+          ZIP='/tmp/FALCON_2026-10-29_PostReviewer_E1_E4_Package_Repaired.zip'
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$ZIP" --clobber
+          else
+            gh release create "$TAG" "$ZIP" --target "$(git rev-parse HEAD)" --title 'FALCON 29 Oct 2026 — frozen peer-review package' --prerelease --notes 'Original 151-file SHA-verified frozen manuscript, code, source-derived evidence and supplement. E5 remains OPEN: bibliography, third-party image rights, author sign-off and journal-specific submission compliance. This is not publisher submission clearance.'
+          fi
