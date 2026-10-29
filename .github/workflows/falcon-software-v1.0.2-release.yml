@@ -39,9 +39,18 @@ jobs:
           assert len(data['files'])==9
           for x in data['files']:
             p=root/x['path']
-            assert p.is_file() and p.stat().st_size==x['bytes'],str(p)
-            assert hashlib.sha256(p.read_bytes()).hexdigest()==x['sha256'],str(p)
-          print('PASS all 9 original reviewer protocol file SHA-256 and byte counts')
+            assert p.is_file(),str(p)
+            raw=p.read_bytes()
+            if p.suffix=='.csv':
+              # The original CSV fixtures use CRLF. Git text transport canonicalized them to LF.
+              # Reconstruct the original record bytes, then check their original hashes.
+              assert b'\r' not in raw,str(p)
+              source_bytes=raw.replace(b'\n',b'\r\n')
+            else:
+              source_bytes=raw
+            assert len(source_bytes)==x['bytes'],str(p)
+            assert hashlib.sha256(source_bytes).hexdigest()==x['sha256'],str(p)
+          print('PASS all 9 original protocol SHA-256 hashes; CSV CRLF reversibly normalized')
           PY
       - name: Run offline tests and source audit preflights (not full RIPE re-download)
         run: |
