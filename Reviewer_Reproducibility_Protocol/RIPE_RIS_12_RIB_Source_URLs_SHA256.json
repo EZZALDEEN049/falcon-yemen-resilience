@@ -1,0 +1,122 @@
+[
+  {
+    "collector": "rrc00",
+    "period": "event",
+    "first": {
+      "time_utc": "2020-01-09T08:00:00Z",
+      "sha256": "a55cfb90f54c38452f851f6a13c8a96bd93e8a3f4aeedb48e84357b31d5e05d2",
+      "url": "https://data.ris.ripe.net/rrc00/2020.01/bview.20200109.0800.gz",
+      "bytes": 628186527,
+      "gzip_crc": "passed"
+    },
+    "last": {
+      "time_utc": "2020-01-10T00:00:00Z",
+      "sha256": "3d2147cc860c534829cd89beec115487d97281c45c2a520d8c7469bb605fd38c",
+      "url": "https://data.ris.ripe.net/rrc00/2020.01/bview.20200110.0000.gz",
+      "bytes": 627746537,
+      "gzip_crc": "passed"
+    },
+    "row_sha256": "f4e8ba2ac35b374a94a286606903b7b09971a04e578794cd2e13732ddde058ad",
+    "rows": 7039
+  },
+  {
+    "collector": "rrc00",
+    "period": "reference",
+    "first": {
+      "time_utc": "2020-01-02T08:00:00Z",
+      "sha256": "57281a7a3d7936ac726323464cbd60e1a8831f0fe8b3dce7f511d31bbe7224e6",
+      "url": "https://data.ris.ripe.net/rrc00/2020.01/bview.20200102.0800.gz",
+      "bytes": 615975001,
+      "gzip_crc": "passed"
+    },
+    "last": {
+      "time_utc": "2020-01-03T00:00:00Z",
+      "sha256": "2ef04516f2c2ec248ed1dc9faf82d88852baf68afe2b2040c2f57686bde7fc0b",
+      "url": "https://data.ris.ripe.net/rrc00/2020.01/bview.20200103.0000.gz",
+      "bytes": 602300948,
+      "gzip_crc": "passed"
+    },
+    "row_sha256": "8701ecf72adefd87eb4026101c23dfebbb00efc3ec2c4fa10a9f3f9888229a4e",
+    "rows": 6570
+  },
+  {
+    "collector": "rrc01",
+    "period": "event",
+    "first": {
+      "time_utc": "2020-01-09T08:00:00Z",
+      "sha256": "eb2910a382dd21a537a971145734a6c3a00ccd035e17261643eb3f2359750d7c",
+      "url": "https://data.ris.ripe.net/rrc01/2020.01/bview.20200109.0800.gz",
+      "bytes": 211083656,
+      "gzip_crc": "passed"
+    },
+    "last": {
+      "time_utc": "2020-01-10T00:00:00Z",
+      "sha256": "00086b6f66483d8f7860ea841bba2cdfdcf4e4a3887b9f677957b32f3123c2cb",
+      "url": "https://data.ris.ripe.net/rrc01/2020.01/bview.20200110.0000.gz",
+      "bytes": 200387843,
+      "gzip_crc": "passed"
+    },
+    "row_sha256": "bc2f4eb7cf2df6c3ed04fbf1195cafe999868107812d54e050e7ebde198665ea",
+    "rows": 2870
+  },
+  {
+    "collector": "rrc01",
+    "period": "reference",
+    "first": {
+      "time_utc": "2020-01-02T08:00:00Z",
+      "sha256": "ccb041e51924607ca42c1c2a50254ed201da8ca1abf321c1ce04065ba6e84bd9",
+      "url": "https://data.ris.ripe.net/rrc01/2020.01/bview.20200102.0800.gz",
+      "bytes": 222912135,
+      "gzip_crc": "passed"
+    },
+    "last": {
+      "time_utc": "2020-01-03T00:00:00Z",
+      "sha256": "bb3b359344dfc06ca542f7754b03cd4f4f0240be796da74b6c64127ad342c5b0",
+      "url": "https://data.ris.ripe.net/rrc01/2020.01/bview.20200103.0000.gz",
+      "bytes": 208726033,
+      "gzip_crc": "passed"
+    },
+    "row_sha256": "a994933350aa92b90ad36a4d5758873b4092f99a31524ce793ffdfd5df72870a",
+    "rows": 2837
+  },
+  {
+    "collector": "rrc10",
+    "period": "event",
+    "first": {
+      "time_utc": "2020-01-09T08:00:00Z",
+      "sha256": "d76503427bde035a55ae0f540ee2c1a683b7c068c55547669e947313a423d33d",
+      "url": "https://data.ris.ripe.net/rrc10/2020.01/bview.20200109.0800.gz",
+      "bytes": 106261086,
+      "gzip_crc": "passed"
+    },
+    "last": {
+      "time_utc": "2020-01-10T00:00:00Z",
+      "sha256": "f7f08e3bc76d9d70ab541261bb32b335e6ba7c340fe1a0310df343c990a08671",
+      "url": "https://data.ris.ripe.net/rrc10/2020.01/bview.20200110.0000.gz",
+      "bytes": 106610362,
+      "gzip_crc": "passed"
+    },
+    "row_sha256": "60e427b9d0a1500cfec333ae1a38529d9ba3f23380c3818a0f92220d355c21fe",
+    "rows": 1510
+  },
+  {
+    "collector": "rrc10",
+    "period": "reference",
+    "first": {
+      "time_utc": "2020-01-02T08:00:00Z",
+      "sha256": "9d7f52abebd9580905ad7d215ffa2442bc9c853e64ae3f70f2cccff6f536aab5",
+      "url": "https://data.ris.ripe.net/rrc10/2020.01/bview.20200102.0800.gz",
+      "bytes": 109348021,
+      "gzip_crc": "passed"
+    },
+    "last": {
+      "time_utc": "2020-01-03T00:00:00Z",
+      "sha256": "ead6a30924f1ba8dadc44b2f5db0f42695ccca446397b60dd1c1ed983b90e3e9",
+      "url": "https://data.ris.ripe.net/rrc10/2020.01/bview.20200103.0000.gz",
+      "bytes": 109390658,
+      "gzip_crc": "passed"
+    },
+    "row_sha256": "9d9b05cc356ea52a7e33b9f1b60c53266af6345e126f105c0a3e640c6656e14a",
+    "rows": 1561
+  }
+]

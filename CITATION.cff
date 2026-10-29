@@ -1,8 +1,9 @@
 cff-version: 1.2.0
-message: "If you use this author-owned FALCON research software, cite its exact archived release DOI once published."
-title: "FALCON Yemen 2020: Research Software and Source Provenance"
+message: "Cite the Zenodo release for the exact version of this software; a new DOI is assigned only if Zenodo archives v1.0.2."
+title: "FALCON Yemen 2020: Research Software and Source Provenance (Reviewer Reproducibility v1.0.2)"
 type: software
 license: MIT
+version: 1.0.2
 authors:
   - given-names: Ezzaldeen
     family-names: Al-Tayar
@@ -11,5 +12,5 @@ repository-code: "https://github.com/EZZALDEEN049/falcon-yemen-resilience"
 keywords:
   - BGP
   - RIPE RIS
-  - network measurement
+  - internet measurement
   - Yemen

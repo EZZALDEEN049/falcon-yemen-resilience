@@ -1,5 +1,5 @@
 {
-  "title": "FALCON Yemen 2020: Research Software and Source Provenance (Curated Edition)",
+  "title": "FALCON Yemen 2020: Research Software and Source Provenance (Reviewer Reproducibility v1.0.2)",
   "upload_type": "software",
   "creators": [
     {
@@ -7,15 +7,24 @@
       "affiliation": "Faculty of Engineering and Information Technology, Taiz University, Taiz, Yemen"
     }
   ],
-  "description": "Curated FALCON Yemen 2020 research software and public source-link/checksum provenance. The author-owned software under Code/ is made available under the MIT License (Code/LICENSE). RIPE RIS and IODA source datasets and images are not included or relicensed. Internal reviewer materials, manuscript drafts, provider-origin JSON and source-derived peer-prefix CSV data are excluded. This software-only release is not a complete standalone deposit of the numerical evidence for the pre-submission research manuscript.",
+  "description": "Curated original Python research software and an executable reviewer protocol for reconstructions from original January 2020 RIPE RIS source RIBs, 2020 IODA publisher raster images, and a separate 2023 IODA API event. It includes source URLs, SHA-256 provenance and author-prepared aggregate reference fixtures. It excludes original RIPE MRT binaries, individual peer-prefix rows, third-party publisher PNG files, raw provider IODA JSON, internal referee correspondence and manuscript drafts. Offline preflight does not constitute a complete fresh 12-RIB reparse and 2023 API re-fetch has not been independently verified. Observational route changes do not establish a causal physical cable path or end-user outage.",
   "keywords": [
     "BGP",
     "RIPE RIS",
     "Yemen",
-    "internet measurement",
+    "source provenance",
+    "research software",
     "reproducibility"
   ],
-  "license": "mit",
+  "version": "1.0.2",
   "access_right": "open",
-  "version": "1.0.1"
+  "license": "mit",
+  "related_identifiers": [
+    {
+      "identifier": "https://doi.org/10.5281/zenodo.23752785",
+      "relation": "references",
+      "resource_type": "dataset"
+    }
+  ],
+  "notes": "MIT is limited to original author-owned Python source software; author-created S14/S15 reference tables and prose are separately CC BY 4.0. Third-party RIS/Atlas/IODA data and imagery are excluded and not sublicensed. Earlier software DOI: https://doi.org/10.5281/zenodo.23751733."
 }

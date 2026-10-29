@@ -1,0 +1,49 @@
+{
+  "files": [
+    {
+      "path": "Reviewer_Reproducibility_Protocol/IODA_2020_Publisher_Image_Links_SHA256.json",
+      "bytes": 1217,
+      "sha256": "edcdc34f9e559dbc4d48eb5edfa74a73d36c4df0876a954f7101a88819d0d458"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/IODA_2023_API_ORIGINAL_RESPONSE_URLS_SHA256.json",
+      "bytes": 539,
+      "sha256": "be54173d7cb99243e39a051c98a0bb385dbde57887a2d9553e169895c0e10d76"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/README_REVIEWER_SOURCE_RECONSTRUCTION.md",
+      "bytes": 9636,
+      "sha256": "6610d17a27f31585836a600f1c4f374d33a0b32a4981223707481079605915f4"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/RIPE_RIS_12_RIB_Source_URLs_SHA256.json",
+      "bytes": 4335,
+      "sha256": "721af60aa4c09c250910553c395b78b05f4f94efb4027a73d89468a03b2b14fd"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/Table_S14_2020_Reference_vs_Event_Collector_Summaries.csv",
+      "bytes": 1590,
+      "sha256": "75d5b4e0863ae9c4a349d09b58e485dcc0d921da5355097e2fd413d65fff35ac"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/Table_S15_2020_Reference_vs_Event_Common_Peer_Prefix.csv",
+      "bytes": 1251,
+      "sha256": "467ea0452218232312de94cf8a97fc82c3b02c6fef4e21238f7bbc0605f416ae"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/rebuild_ripe_12_mrt.py",
+      "bytes": 7916,
+      "sha256": "12430ff0b131d8104a54e73d98d465899a33fbb212711a7af2e264b4719ebf68"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/recheck_ioda_2020_from_publisher.py",
+      "bytes": 3545,
+      "sha256": "0bb072d4eb4aa9a8b05f262778167f0d0195aab9bd718682ed2f8d95fee319a4"
+    },
+    {
+      "path": "Reviewer_Reproducibility_Protocol/verify_ioda_2023_api.py",
+      "bytes": 2580,
+      "sha256": "b78f01619dbed038fbd1b960644f0fbddf8be6f2c0f5d7bb08b0f8a1c8daa9f9"
+    }
+  ]
+}

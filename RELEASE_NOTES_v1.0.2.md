@@ -1,0 +1,7 @@
+# FALCON research software v1.0.2 — reviewer-source verification protocol
+
+Sole author Ezzaldeen Al-Tayar, Taiz University, Yemen. This *software-only* version extends the earlier v1.0.1 code with executable RIPE RIS twelve-original-RIB retrieval/reparse, deterministic IODA 2020 publisher raster checks (20,250 calibration settings), and separate IODA 2023 original API-source checks. Includes text provenance, source checksums and author-prepared S14/S15 aggregate reference tables, but no rights-unclear original provider source payloads, third-party figures, internal reviewer materials or unpublished manuscript drafts.
+
+Run the offline preflight commands in README.md, then optionally run the full provider-origin networked source reconstruction. The full 12 original MRT files (~3.75 GB) **have not been freshly re-downloaded and reparsed in this release audit**; the 2023 historical live IODA API may have changed. The 2020 IODA numerical provider-native series remain unavailable. No measured BGP change proves physical FALCON-cable causality or customer connectivity.
+
+**Licenses:** MIT for author-owned scripts (`Code/LICENSE`) only; CC BY 4.0 for author-prepared aggregate S14/S15 reference fixtures and original documentation; external sources are excluded and retain their own rights. Dataset v1.0.2: https://doi.org/10.5281/zenodo.23752785; prior software v1.0.1: https://doi.org/10.5281/zenodo.23751733. The new v1.0.2 DOI must be verified on Zenodo before citing it.

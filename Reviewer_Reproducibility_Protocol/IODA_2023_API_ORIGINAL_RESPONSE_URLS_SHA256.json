@@ -1,0 +1,12 @@
+{
+  "30873": {
+    "url": "https://api.ioda.inetintel.cc.gatech.edu/v2/signals/raw/asn/30873?from=1699488000&until=1699704000",
+    "sha256": "47870f9259cc948af8c5390d59754bdb82702b0fca3624dbcfad5c5dec050641",
+    "status": "historical_original_response_hash_only"
+  },
+  "12486": {
+    "url": "https://api.ioda.inetintel.cc.gatech.edu/v2/signals/raw/asn/12486?from=1699488000&until=1699704000",
+    "sha256": "8f504b8cd68abdf0f48803b66340d25881b3bbdd5b5f80035283af3a82a28b6a",
+    "status": "historical_original_response_hash_only"
+  }
+}
