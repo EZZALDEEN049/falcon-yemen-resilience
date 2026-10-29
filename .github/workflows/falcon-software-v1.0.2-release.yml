@@ -41,10 +41,8 @@ jobs:
             p=root/x['path']
             assert p.is_file(),str(p)
             raw=p.read_bytes()
-            if p.suffix=='.csv':
-              # The original CSV fixtures use CRLF. Git text transport canonicalized them to LF.
-              # Reconstruct the original record bytes, then check their original hashes.
-              assert b'\r' not in raw,str(p)
+            if p.suffix=='.csv' and b'\r' not in raw:
+              # CSVs are stored with their original CRLF, but accept precisely reversible LF normalization.
               source_bytes=raw.replace(b'\n',b'\r\n')
             else:
               source_bytes=raw
