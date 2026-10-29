@@ -1,0 +1,63 @@
+name: Verify and publish FALCON curated software v1.0.2
+on:
+  push:
+    branches:
+      - zenodo-clean-v1.0.2
+    paths:
+      - .github/workflows/falcon-software-v1.0.2-release.yml
+permissions:
+  contents: write
+jobs:
+  verify-and-publish:
+    if: github.repository == 'EZZALDEEN049/falcon-yemen-resilience'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Assert curated software archive is clean of internal and provider-origin payloads
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import subprocess
+          files=subprocess.check_output(['git','ls-files'],text=True).splitlines()
+          banned=['Manuscript/','Review/','Historical_Superseded/','Evidence/','paper/','results/','figures/']
+          assert not [p for p in files if any(p.startswith(b) for b in banned)]
+          assert not [p for p in files if p.lower().endswith(('.docx','.pdf','.png','.jpeg','.jpg','.zip','.gz','.tar.xz'))]
+          assert len(files) <= 40
+          print('PASS curated public source-only release inventory:',len(files),'files')
+          PY
+      - name: Verify original reviewer protocol file SHA-256 manifest
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, hashlib
+          root=Path('.')
+          data=json.loads(Path('REVIEWER_PROTOCOL_SOURCE_SHA256.json').read_text())
+          assert len(data['files'])==9
+          for x in data['files']:
+            p=root/x['path']
+            assert p.is_file() and p.stat().st_size==x['bytes'],str(p)
+            assert hashlib.sha256(p.read_bytes()).hexdigest()==x['sha256'],str(p)
+          print('PASS all 9 original reviewer protocol file SHA-256 and byte counts')
+          PY
+      - name: Run offline tests and source audit preflights (not full RIPE re-download)
+        run: |
+          python -m compileall -q Code Reviewer_Reproducibility_Protocol
+          python Code/rebuild_2020_peer_prefix.py --self-test
+          python Reviewer_Reproducibility_Protocol/rebuild_ripe_12_mrt.py --manifest Reviewer_Reproducibility_Protocol/RIPE_RIS_12_RIB_Source_URLs_SHA256.json --expected-s14 Reviewer_Reproducibility_Protocol/Table_S14_2020_Reference_vs_Event_Collector_Summaries.csv --expected-s15 Reviewer_Reproducibility_Protocol/Table_S15_2020_Reference_vs_Event_Common_Peer_Prefix.csv --canonical-parser Code/rebuild_2020_peer_prefix.py --preflight
+          python Reviewer_Reproducibility_Protocol/recheck_ioda_2020_from_publisher.py --manifest Reviewer_Reproducibility_Protocol/IODA_2020_Publisher_Image_Links_SHA256.json --code-dir Code --preflight
+          python Reviewer_Reproducibility_Protocol/verify_ioda_2023_api.py --manifest Reviewer_Reproducibility_Protocol/IODA_2023_API_ORIGINAL_RESPONSE_URLS_SHA256.json --reproduce-script Code/reproduce_native_ioda_2023_v2.py --preflight
+      - name: Publish one new GitHub release (tag pinned to verified commit)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=v1.0.2
+          if git show-ref --verify --quiet refs/tags/$TAG || gh release view $TAG >/dev/null 2>&1; then
+            echo 'ERROR: tag or release already exists; refusing overwrite.'
+            exit 12
+          fi
+          gh release create "$TAG" --target "$GITHUB_SHA" --title 'FALCON Yemen 2020 — Curated Research Software v1.0.2' --notes-file RELEASE_NOTES_v1.0.2.md --latest=false
+          echo "Published tag: $TAG at verified SHA $GITHUB_SHA"
