@@ -1,0 +1,14 @@
+# Non-event 16-hour historical RIPE RIS baseline: evidence audit
+
+**Reference window:** 2020-01-02 08:00 UTC → 2020-01-03 00:00 UTC. **Event-associated window:** 2020-01-09 08:00 UTC → 2020-01-10 00:00 UTC.
+The reference date was frozen in the research repository before examination of its outputs; one reference window is not a statistical estimate of ordinary variation.
+Source: six historical reference MRT RIBs and the previously published six event MRT RIBs; individual peer-prefix AS_PATH adjacency observations.
+The comparisons below are descriptive only. Neither baseline period is guaranteed to have zero unrelated network incidents, nor does a large difference identify a specific cable mechanism.
+
+| Collector | Origin AS | Event changed/comp. | Reference changed/comp. | Event % | Reference % | Difference pp | Fixed-comparable peer-prefixes | Fixed-cohort Δ pp |
+|---|---|---:|---:|---:|---:|---:|---:|---:|
+| RRC00 | 30873 | 4157/6220 | 29/6047 | 66.83 | 0.48 | 66.35 | 5965 | 66.67 |
+| RRC00 | 12486 | 23/366 | 0/410 | 6.28 | 0.00 | 6.28 | 349 | 6.59 |
+| RRC01 | 30873 | 1482/2180 | 23/2549 | 67.98 | 0.90 | 67.08 | 2180 | 66.97 |
+| RRC01 | 12486 | 6/148 | 0/172 | 4.05 | 0.00 | 4.05 | 143 | 4.20 |
+PASS: 6 source audits, 12 group summaries, 6 contrasts, cohort sensitivity

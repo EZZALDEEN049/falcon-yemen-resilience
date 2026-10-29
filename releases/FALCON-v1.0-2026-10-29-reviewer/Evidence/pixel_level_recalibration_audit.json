@@ -1,0 +1,116 @@
+{
+  "definition": "published-raster column trace, not native IODA samples",
+  "calibration": {
+    "x_min": 112,
+    "x_max": 1779,
+    "y_min": 240,
+    "y_zero": 632,
+    "pixels_per_unit": 252
+  },
+  "time_utc": [
+    "2020-01-07T22:10:00+00:00",
+    "2020-01-10T22:15:00+00:00"
+  ],
+  "baseline": [
+    "2020-01-08T00:00:00+00:00",
+    "2020-01-09T08:30:00+00:00"
+  ],
+  "acute": [
+    "2020-01-09T18:00:00+00:00",
+    "2020-01-10T00:00:00+00:00"
+  ],
+  "results": {
+    "AS30873": {
+      "size": [
+        1840,
+        874
+      ],
+      "sha256": "229b9ed3e0e169c78331b7e50f0a2af9f47f88c3d0b73d0524db633d14977efd",
+      "all_columns": 1668,
+      "columns_with_bgp": 1661,
+      "columns_with_active": 1661,
+      "baseline": {
+        "bgp": {
+          "n_columns": 751,
+          "median": 1.003968253968254,
+          "mean": 1.003968253968254
+        },
+        "active": {
+          "n_columns": 751,
+          "median": 0.6726190476190477,
+          "mean": 0.6689387694713926
+        }
+      },
+      "acute": {
+        "bgp": {
+          "n_columns": 139,
+          "median": 0.9603174603174603,
+          "mean": 0.9603174603174603
+        },
+        "active": {
+          "n_columns": 132,
+          "median": 0.30158730158730157,
+          "mean": 0.3114628427128427
+        }
+      },
+      "calculated_retention_percent": {
+        "bgp": 95.65217391304348,
+        "active": 44.83775811209439
+      },
+      "calculated_gap_pp": 50.81441580094909,
+      "previous_published_plot_proxy": {
+        "bgp_retention_pct": 95.65217391304348,
+        "active_retention_pct": 44.83775811209439,
+        "gap_pp": 50.81441580094909
+      },
+      "difference_from_previous_pp": 0.0,
+      "pixel_geometry_pass": true
+    },
+    "AS12486": {
+      "size": [
+        1840,
+        874
+      ],
+      "sha256": "fb4be5c7d169a659a1b7f5c207eb56c5390d20faaf60705dc0d34610466a612c",
+      "all_columns": 1668,
+      "columns_with_bgp": 1668,
+      "columns_with_active": 1617,
+      "baseline": {
+        "bgp": {
+          "n_columns": 751,
+          "median": 1.003968253968254,
+          "mean": 1.003968253968254
+        },
+        "active": {
+          "n_columns": 719,
+          "median": 0.8928571428571429,
+          "mean": 0.874108660617701
+        }
+      },
+      "acute": {
+        "bgp": {
+          "n_columns": 139,
+          "median": 1.003968253968254,
+          "mean": 1.003968253968254
+        },
+        "active": {
+          "n_columns": 130,
+          "median": 0.8928571428571429,
+          "mean": 0.8353937728937729
+        }
+      },
+      "calculated_retention_percent": {
+        "bgp": 100.0,
+        "active": 100.0
+      },
+      "calculated_gap_pp": 0.0,
+      "previous_published_plot_proxy": {
+        "bgp_retention_pct": 100,
+        "active_retention_pct": 100,
+        "gap_pp": 0
+      },
+      "difference_from_previous_pp": 0.0,
+      "pixel_geometry_pass": true
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "source_review_date": "2026-10-28",
+  "issues": {
+    "CRITICAL-1": "CLOSED for raster; provider numeric series OPEN",
+    "CRITICAL-2": "CLOSED; physical topology explicitly out of scope",
+    "MAJOR-1": "CLOSED editorially; exact physical timing remains unavailable",
+    "MAJOR-2": "CLOSED for descriptive comparisons; causal control unavailable",
+    "MAJOR-3": "CLOSED for semantic qualification; raw IODA samples unavailable",
+    "MAJOR-4": "CLOSED",
+    "MAJOR-5": "CLOSED as framing; journal novelty judgment independent",
+    "MAJOR-6": "CLOSED for reviewer-local access; permanent public deposition/license approval OPEN",
+    "MINOR-1": "CLOSED; final journal production artwork specs to confirm",
+    "MINOR-2": "CLOSED",
+    "MINOR-3": "CLOSED with unavoidable methodological qualifications",
+    "REVIEWER-1": "PARTIAL, evidence cannot be invented",
+    "REVIEWER-2": "CLOSED for interpretation, not causal identification",
+    "REVIEWER-3": "PARTIAL: publication permissions/DOI/journal checklist pending"
+  },
+  "note": "Internal revision checking only; external referee approval not obtained; original 2020 IODA provider numerical series unavailable"
+}

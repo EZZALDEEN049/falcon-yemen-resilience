@@ -1,0 +1,292 @@
+{
+  "measurement": "RIPE RIS collector-specific two full historical MRT RIB snapshots, peer-liveness-qualified target-origin audit (not IODA)",
+  "collector": "rrc01",
+  "status": "VALIDATED_TWO_SNAPSHOT_DESCRIPTIVE_NOT_EVENT_CAUSAL",
+  "snapshots": [
+    {
+      "time_utc": "2020-01-09T08:00:00Z",
+      "source": {
+        "url": "https://data.ris.ripe.net/rrc01/2020.01/bview.20200109.0800.gz",
+        "bytes": 211083656,
+        "sha256": "eb2910a382dd21a537a971145734a6c3a00ccd035e17261643eb3f2359750d7c",
+        "gzip_crc": "passed"
+      },
+      "full_rib_elements": 20023242,
+      "all_peer_sessions": 110,
+      "target_origin_route_counts": {
+        "12486": 179,
+        "30873": 2691
+      },
+      "target_origin_discarded": {}
+    },
+    {
+      "time_utc": "2020-01-10T00:00:00Z",
+      "source": {
+        "url": "https://data.ris.ripe.net/rrc01/2020.01/bview.20200110.0000.gz",
+        "bytes": 200387843,
+        "sha256": "00086b6f66483d8f7860ea841bba2cdfdcf4e4a3887b9f677957b32f3123c2cb",
+        "gzip_crc": "passed"
+      },
+      "full_rib_elements": 19179186,
+      "all_peer_sessions": 108,
+      "target_origin_route_counts": {
+        "12486": 148,
+        "30873": 2180
+      },
+      "target_origin_discarded": {}
+    }
+  ],
+  "results": [
+    {
+      "asn": 12486,
+      "two_snapshot_target_origin_rows": {
+        "first": 179,
+        "second": 148
+      },
+      "target_origin_peer_sessions": {
+        "first": 52,
+        "second": 26,
+        "both_target_origin": 26
+      },
+      "all_origin_independent_peer_sessions": {
+        "first": 110,
+        "second": 108,
+        "both": 108
+      },
+      "peer_liveness_verified_with_unrelated_origins": {
+        "first_target_peers_seen_in_second_FULL_RIB": 50,
+        "first_target_peers_NOT_seen_in_second_FULL_RIB": 2,
+        "fraction": 0.9615384615384616
+      },
+      "controlled_two_snapshot_route_observations": {
+        "first_target_origin_routes_on_independently_alive_peers": 172,
+        "also_target_origin_on_same_peer_prefix_second": 148,
+        "absent_target_origin_on_same_peer_prefix_second": 24,
+        "excluded_first_routes_no_second_peer_coverage": 7,
+        "target_origin_retention_fraction_on_alive_peers": 0.8604651162790697,
+        "peer_equal_weight_median_retention": 1.0,
+        "number_independent_matched_peers": 50
+      },
+      "upstream_change_observations": {
+        "common_target_origin_routes_with_parsable_immediate_upstream": 148,
+        "changed": 6,
+        "fraction": 0.04054054054054054,
+        "unparseable_common_routes": 0,
+        "adjacent_upstream_most_common_before": [
+          [
+            "15412",
+            126
+          ],
+          [
+            "6762",
+            21
+          ],
+          [
+            "197206",
+            1
+          ]
+        ],
+        "adjacent_upstream_most_common_after": [
+          [
+            "15412",
+            120
+          ],
+          [
+            "6762",
+            23
+          ],
+          [
+            "197206",
+            5
+          ]
+        ],
+        "top_upstream_transitions": [
+          {
+            "from_asn": "15412",
+            "to_asn": "15412",
+            "route_observations": 120
+          },
+          {
+            "from_asn": "6762",
+            "to_asn": "6762",
+            "route_observations": 21
+          },
+          {
+            "from_asn": "15412",
+            "to_asn": "197206",
+            "route_observations": 4
+          },
+          {
+            "from_asn": "15412",
+            "to_asn": "6762",
+            "route_observations": 2
+          },
+          {
+            "from_asn": "197206",
+            "to_asn": "197206",
+            "route_observations": 1
+          }
+        ],
+        "adjacent_AS15412_route_observations_before": 126,
+        "adjacent_AS15412_route_observations_after": 120,
+        "distinct_prefixes_with_parsable_upstream": 6,
+        "distinct_prefixes_with_any_neighbor_change": 2,
+        "distinct_peer_sessions_with_parsable_upstream": 26,
+        "distinct_peer_sessions_with_any_neighbor_change": 5,
+        "peer_equal_weight_median_upstream_change_fraction": 0.0,
+        "prefix_equal_weight_median_upstream_change_fraction": 0.0,
+        "counting_caveat": "Route-observation transitions share prefixes, collectors, and upstreams; never claim independent samples or causal attribution."
+      },
+      "scope_limits": [
+        "Not comparable to IODA /24-visible signal percentages",
+        "First snapshot not independently confirmed pre-cable-failure",
+        "No A/W update replay; reason for route absence (withdrawal, origin change, local policy) not established",
+        "Peer seen in both RIB snapshots does not prove continuous operation between snapshots",
+        "Only one RIPE RRC collector per run, not a full nationally representative sample",
+        "No inference about actual path taken by customer packets, traffic, or physical cable backup"
+      ]
+    },
+    {
+      "asn": 30873,
+      "two_snapshot_target_origin_rows": {
+        "first": 2691,
+        "second": 2180
+      },
+      "target_origin_peer_sessions": {
+        "first": 55,
+        "second": 40,
+        "both_target_origin": 40
+      },
+      "all_origin_independent_peer_sessions": {
+        "first": 110,
+        "second": 108,
+        "both": 108
+      },
+      "peer_liveness_verified_with_unrelated_origins": {
+        "first_target_peers_seen_in_second_FULL_RIB": 53,
+        "first_target_peers_NOT_seen_in_second_FULL_RIB": 2,
+        "fraction": 0.9636363636363636
+      },
+      "controlled_two_snapshot_route_observations": {
+        "first_target_origin_routes_on_independently_alive_peers": 2582,
+        "also_target_origin_on_same_peer_prefix_second": 2180,
+        "absent_target_origin_on_same_peer_prefix_second": 402,
+        "excluded_first_routes_no_second_peer_coverage": 109,
+        "target_origin_retention_fraction_on_alive_peers": 0.8443067389620449,
+        "peer_equal_weight_median_retention": 0.9603960396039604,
+        "number_independent_matched_peers": 53
+      },
+      "upstream_change_observations": {
+        "common_target_origin_routes_with_parsable_immediate_upstream": 2180,
+        "changed": 1482,
+        "fraction": 0.6798165137614679,
+        "unparseable_common_routes": 0,
+        "adjacent_upstream_most_common_before": [
+          [
+            "15412",
+            1089
+          ],
+          [
+            "174",
+            698
+          ],
+          [
+            "8529",
+            208
+          ],
+          [
+            "3491",
+            185
+          ]
+        ],
+        "adjacent_upstream_most_common_after": [
+          [
+            "174",
+            2180
+          ]
+        ],
+        "top_upstream_transitions": [
+          {
+            "from_asn": "15412",
+            "to_asn": "174",
+            "route_observations": 1089
+          },
+          {
+            "from_asn": "174",
+            "to_asn": "174",
+            "route_observations": 698
+          },
+          {
+            "from_asn": "8529",
+            "to_asn": "174",
+            "route_observations": 208
+          },
+          {
+            "from_asn": "3491",
+            "to_asn": "174",
+            "route_observations": 185
+          }
+        ],
+        "adjacent_AS15412_route_observations_before": 1089,
+        "adjacent_AS15412_route_observations_after": 0,
+        "distinct_prefixes_with_parsable_upstream": 105,
+        "distinct_prefixes_with_any_neighbor_change": 79,
+        "distinct_peer_sessions_with_parsable_upstream": 40,
+        "distinct_peer_sessions_with_any_neighbor_change": 38,
+        "peer_equal_weight_median_upstream_change_fraction": 0.6907216494845361,
+        "prefix_equal_weight_median_upstream_change_fraction": 1.0,
+        "counting_caveat": "Route-observation transitions share prefixes, collectors, and upstreams; never claim independent samples or causal attribution."
+      },
+      "scope_limits": [
+        "Not comparable to IODA /24-visible signal percentages",
+        "First snapshot not independently confirmed pre-cable-failure",
+        "No A/W update replay; reason for route absence (withdrawal, origin change, local policy) not established",
+        "Peer seen in both RIB snapshots does not prove continuous operation between snapshots",
+        "Only one RIPE RRC collector per run, not a full nationally representative sample",
+        "No inference about actual path taken by customer packets, traffic, or physical cable backup"
+      ]
+    }
+  ],
+  "individual_unit_summary": [
+    {
+      "collector": "rrc01",
+      "target_as": 12486,
+      "initial_rows": 179,
+      "excluded_peer_absent": 7,
+      "eligible": 172,
+      "retained": 148,
+      "not_retained": 24,
+      "changed": 6,
+      "comparable": 148,
+      "peer_prefix_changed_pct": 4.054054054054054,
+      "prefix_count": 6,
+      "prefix_any_changed": 2,
+      "prefix_equal_mean_pct": 3.948717948717949,
+      "prefix_equal_median_pct": 0.0,
+      "peer_count": 26,
+      "peer_any_changed": 5,
+      "peer_equal_mean_pct": 3.8461538461538463,
+      "peer_equal_median_pct": 0.0
+    },
+    {
+      "collector": "rrc01",
+      "target_as": 30873,
+      "initial_rows": 2691,
+      "excluded_peer_absent": 109,
+      "eligible": 2582,
+      "retained": 2180,
+      "not_retained": 402,
+      "changed": 1482,
+      "comparable": 2180,
+      "peer_prefix_changed_pct": 67.98165137614679,
+      "prefix_count": 105,
+      "prefix_any_changed": 79,
+      "prefix_equal_mean_pct": 68.04177109440268,
+      "prefix_equal_median_pct": 100.0,
+      "peer_count": 40,
+      "peer_any_changed": 38,
+      "peer_equal_mean_pct": 74.19455143055717,
+      "peer_equal_median_pct": 69.0721649484536
+    }
+  ]
+}

@@ -1,0 +1,3 @@
+collector,target_as,initial_rows,excluded_peer_absent,eligible,retained,not_retained,changed,comparable,peer_prefix_changed_pct,prefix_count,prefix_any_changed,prefix_equal_mean_pct,prefix_equal_median_pct,peer_count,peer_any_changed,peer_equal_mean_pct,peer_equal_median_pct
+rrc01,12486,179,7,172,172,0,0,172,0.0,7,0,0.0,0.0,49,0,0.0,0.0
+rrc01,30873,2658,105,2553,2549,4,23,2549,0.9023146331894861,105,7,0.9557109557109557,0.0,54,17,0.4390988927071401,0.0

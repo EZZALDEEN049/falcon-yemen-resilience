@@ -1,0 +1,33 @@
+{
+  "source_article": "https://internetdisruption.report/2020/02/23/internet-disruption-report-january-2020/",
+  "data_class": "Publisher original PNG raster; NOT original provider IODA time-series",
+  "images": [
+    {
+      "caption_as": "AS30873",
+      "publisher_url": "https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-as30783-ioda.png",
+      "sha256": "229b9ed3e0e169c78331b7e50f0a2af9f47f88c3d0b73d0524db633d14977efd",
+      "size_px": [
+        1840,
+        874
+      ],
+      "note": "Publisher URL spelling as30783 differs from plot title AS30873."
+    },
+    {
+      "caption_as": "AS12486",
+      "publisher_url": "https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-as12486-ioda.png",
+      "sha256": "fb4be5c7d169a659a1b7f5c207eb56c5390d20faaf60705dc0d34610466a612c",
+      "size_px": [
+        1840,
+        874
+      ]
+    }
+  ],
+  "deterministic_AS30873_gap_pp": 50.814415801,
+  "deterministic_range_pp": [
+    45.8074,
+    55.1698
+  ],
+  "publisher_redistribution_rights": "NOT VERIFIED; source PNGs are not republished in this reviewer package",
+  "raw_2020_IODA_numeric_data": "UNAVAILABLE",
+  "sensitivity_grid_is_sampling_uncertainty": false
+}

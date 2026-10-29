@@ -1,0 +1,7 @@
+collector,asn,reference_changed,reference_comparable,event_changed,event_comparable,difference_percentage_points
+rrc00,30873,29,6047,4157,6220,66.3532
+rrc00,12486,0,410,23,366,6.2842
+rrc01,30873,23,2549,1482,2180,67.0793
+rrc01,12486,0,172,6,148,4.0541
+rrc10,30873,6,1464,868,1341,64.318
+rrc10,12486,0,97,11,78,14.1026

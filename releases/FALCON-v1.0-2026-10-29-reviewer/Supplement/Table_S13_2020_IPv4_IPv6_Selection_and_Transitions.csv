@@ -1,0 +1,13 @@
+﻿collector,origin_as,address_family,first_rows,unique_first_prefixes,eligible_on_full_RIB_peer,excluded_peer_absent,same_origin_retained,origin_absent_or_changed_at_endpoint,adjacency_comparable,unparseable_adjacent_path,neighbor_changed,change_percent_if_comparable
+rrc00,30873,IPv4,6173,101,6172,1,5820,352,5820,0,3879,66.649485
+rrc00,30873,IPv6,438,8,430,8,400,30,400,0,278,69.5
+rrc00,12486,IPv4,373,6,373,0,366,7,366,0,23,6.284153
+rrc00,12486,IPv6,55,1,54,1,0,54,0,0,0,N/A (zero comparable routes)
+rrc01,30873,IPv4,2493,101,2392,101,2029,363,2029,0,1358,66.929522
+rrc01,30873,IPv6,198,8,190,8,151,39,151,0,124,82.119205
+rrc01,12486,IPv4,154,6,148,6,148,0,148,0,6,4.054054
+rrc01,12486,IPv6,25,1,24,1,0,24,0,0,0,N/A (zero comparable routes)
+rrc10,30873,IPv4,1316,101,1316,0,1261,55,1261,0,815,64.631245
+rrc10,30873,IPv6,103,8,103,0,80,23,80,0,53,66.25
+rrc10,12486,IPv4,78,6,78,0,78,0,78,0,11,14.102564
+rrc10,12486,IPv6,13,1,13,0,0,13,0,0,0,N/A (zero comparable routes)
