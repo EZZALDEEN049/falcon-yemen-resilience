@@ -1,3 +1,0 @@
-2026-10-26 original RIPE RIS 2020 MRT pilot with peer IP validation
-2026-10-26 retry one full rrc00 RIB with 1.5 GB cap
-2026-10-26 baseline and Jan 10 00:00 UTC two-RIB pilot

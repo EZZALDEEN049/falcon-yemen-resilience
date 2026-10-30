@@ -1,0 +1,159 @@
+Origin-adjacent BGP reconfiguration during Yemen's January 2020 FALCON disruption across three RIPE RIS collectors
+
+
+Origin-adjacent BGP reconfiguration during Yemen's January 2020 FALCON disruption across three RIPE RIS collectors
+Ezzaldeen Al-Tayar
+Faculty of Engineering and Information Technology, Taiz University, Taiz, Yemen
+*Corresponding author: Ezzaldeen Al-Tayar | Email: azzaltayyar@gmail.com
+Research Article
+Abstract
+Submarine-cable disruptions can coincide with Internet routing changes, but BGP observations do not identify physical paths or user reachability. This study compared origin-adjacent AS_PATH neighbors for AS30873 and AS12486 between two RIPE Routing Information Service (RIS) routing-table checkpoints (9 January 08:00–10 January 00:00 UTC 2020) at RRC00, RRC01 and RRC10, and against one retrospectively selected 16-hour reference interval (2–3 January). Twelve checksum-documented original RIB files yielded 11,419 event and 10,968 reference first-checkpoint peer–prefix records. Comparable-route denominators retained 10,333 event and 10,739 reference observations. Among comparable AS30873 routes, changed-neighbor fractions were 66.83%, 67.98% and 64.73% during the event versus 0.48%, 0.90% and 0.41% in the reference; fixed-key comparisons showed the same direction. AS12486 changed-neighbor denominators were effectively IPv4-only because eligible IPv6 routes were not retained under the same-origin endpoint criterion (0/54, 0/24 and 0/13). Separately, January 2020 IODA publisher-image digitization suggested a 50.8-percentage-point difference between differently normalized BGP and active signals, with a 45.8–55.2-point deterministic sensitivity range. These source-scoped differences establish routing reconfiguration, not a cable-causal effect, ordinary-churn distribution or end-user outage measurement.
+Keywords: BGP; RIPE RIS; submarine cables; Internet measurement; Yemen; network resilience
+Introduction
+Submarine networks carry a large share of international data traffic and can introduce shared physical dependencies for otherwise distinct Internet operators. International and regional connectivity disruption has therefore motivated work on submarine-cable resilience and the mapping of undersea assets to packet-level connectivity. [1–3]
+Cross-layer maps can infer candidate cable-to-IP relationships, but those associations depend on uncertainty-aware mapping rather than on BGP paths alone. Nautilus, Xaminer and Calypso illustrate complementary methods for mapping and analysing these dependencies. [4], [5], [6] Studies combining routing and active Internet measurements demonstrate why retained BGP visibility should not be equated to functional reachability. [7]
+In January 2020, reporting described an interruption of international connectivity associated with Yemen’s FALCON cable and a sharp capacity reduction. [8], [9] The objective here is narrower than confirming the physical cause: to identify which origin-adjacent BGP reconfigurations were visible at three historical RIS collectors and how this depends on observational unit, source and selected time window. The analysis reports a single earlier comparison rather than an estimated baseline distribution, and keep 2020 plot-digitized IODA, limited RIPE Atlas results and a distinct 2023 incident separate from original 2020 routing data.
+Results
+Source-audited 2020 BGP endpoint comparison
+Across the three collectors, the 9–10 January source-derived records comprised 11,419 first-checkpoint target-origin peer–prefix observations for AS30873 and AS12486 combined. The 2–3 January reference comprised 10,968. Table 1 preserves each collector, origin AS, changed count, comparable-route denominator and conditional percentage; each observation is an endpoint-qualified route view rather than an independent user, peer or physical cable.
+Selection into the comparable-route denominator differed between the two windows. Of 11,419 first-checkpoint event records, 10,333 (90.49%) were comparable, whereas 10,739 of 10,968 reference records (97.91%) were comparable. Thus, 1,086 (9.51%) and 229 (2.09%) records, respectively, did not meet the comparison conditions. These excluded observations comprise unmatched peers, non-retained origin records and/or unparsable adjacency rather than observed withdrawals. The complete collector-by-origin selection flow is provided in Supplementary Table S16. Rates in Table 1 apply only to the retained comparable records, and the unequal retention fractions limit direct window-to-window interpretation.
+	Collector
+	Origin
+	Reference changed / n
+	Event changed / n
+	Δ pp
+
+	RRC00
+	AS30873
+	29/6047 (0.48%)
+	4157/6220 (66.83%)
+	+66.35
+
+	RRC00
+	AS12486
+	0/410 (0.00%)
+	23/366 (6.28%)
+	+6.28
+
+	RRC01
+	AS30873
+	23/2549 (0.90%)
+	1482/2180 (67.98%)
+	+67.08
+
+	RRC01
+	AS12486
+	0/172 (0.00%)
+	6/148 (4.05%)
+	+4.05
+
+	RRC10
+	AS30873
+	6/1464 (0.41%)
+	868/1341 (64.73%)
+	+64.32
+
+	RRC10
+	AS12486
+	0/97 (0.00%)
+	11/78 (14.10%)
+	+14.10
+
+
+
+For AS30873, the rates were 0.48%, 0.90% and 0.41% in the reference, compared with 66.83%, 67.98% and 64.73% in the event interval (RRC00, RRC01 and RRC10). The event-minus-reference contrasts were +66.35, +67.08 and +64.32 percentage points. These differences describe the chosen observations and cannot be converted into a probability of an abnormal event. The exact fixed-key intersections also retained large positive contrasts: +66.67 pp (n = 5,965), +66.97 pp (n = 2,180), and +64.35 pp (n = 1,341), respectively (Supplementary Table S15).
+
+The most frequent changed AS30873 transition was AS15412→AS174 (2,793, 1,089 and 593 observations by collector); AS174→AS174, by contrast, is an unchanged pair, not a path switch (Supplementary Table S12). The observed AS_PATH adjacency is not a traceroute or physical-cable assignment. The smaller AS12486 changes (23/366, 6/148 and 11/78 retained routes) are not an experimental control because its origin-prefix inventory and address-family selections differ from AS30873.
+AS12486 IPv6 endpoint qualification
+Eligible AS12486 IPv6 first-checkpoint origin observations were 54, 24 and 13 across RRC00, RRC01 and RRC10 during the event, but none satisfied same-origin retention at the second endpoint. The corresponding earlier-reference retained/eligible counts were 54/54, 23/23 and 13/13. Therefore, the AS12486 neighbor-change denominators in Table 1 are effectively IPv4-only; missing origin observations can have several causes and do not establish explicit withdrawals or loss of IPv6 service.
+	Collector
+	Reference retained/eligible
+	Event retained/eligible
+	Event nonretained
+
+	RRC00
+	54/54
+	0/54
+	54
+
+	RRC01
+	23/23
+	0/24
+	24
+
+	RRC10
+	13/13
+	0/13
+	13
+
+
+
+
+Secondary January 2020 IODA and independent measurement limits
+The January 2020 IODA original publisher graphs provide secondary image-digitized proxies, not recovered provider-native numerical time series. In an acute phase, separately normalized AS30873 plot medians indicated BGP-visibility retention of 95.6522% and active-probing retention of 44.8378%, a +50.8144 percentage-point difference between different measurement families. A deterministic 20,250-configuration grid over calibration and analyst choices yielded a +45.8074 to +55.1698 percentage-point range; its settings are not independent trials or a statistical confidence interval. Publisher-image links and prior SHA-256 digests are documented in the software archive; the publisher PNGs are not republished here. [10]
+One separately audited RIPE Atlas public measurement (ID 8307351; target 195.94.0.34) reported 3,343 replies in 3,360 ping attempts from seven probe IDs across 8–12 January 2020. These are source-scoped single-target measurements, not complete national reachability or a reconstruction of the IODA active-probing series. [11], [12]
+Distinct November 2023 IODA event
+Original provider JSON available in the earlier reviewer archive supported separate window-based IODA calculations for a November 2023 maintenance-related disruption. Operational circumstances and availability of source-native data differ from January 2020; the later episode tests interpretive caution across measurement families and is not a replication or untreated control for January 2020. [13], [14], [15]
+Discussion
+The consistently elevated AS30873 adjacent-neighbor change fractions across three RIS collectors, together with the one-week-earlier comparison and fixed-key audit, strengthen a strictly historical BGP endpoint observation. They do not identify cable use, route diversity at a fibre level, or traffic delivery. Collector peer visibility is not an independent random sample of Internet paths; multiple prefixes and snapshots of one peer are correlated. A one-window reference cannot estimate the distribution of ordinary churn or an event counterfactual.
+A selection-sensitive interpretation is especially important here: the comparable fraction was 90.49% in the event-associated window versus 97.91% in the earlier reference. The fixed-key intersection addresses one change in observation composition but conditions on records surviving both windows and may itself induce selection bias. Consequently, the large descriptive contrasts are conditional, rather than unbiased estimates of an underlying network-wide change probability. Neither excluded records nor retained paths establish continuous forwarding, the physical cable used, or subscriber connectivity.
+Comparing AS30873 with AS12486 is particularly sensitive to unequal prefix inventory and endpoint address-family selection. AS12486’s zero same-origin retained IPv6 event observations qualify what its lower changed-neighbor fractions mean; they neither confirm a healthy control AS nor a total IPv6 failure. The design can distinguish origin-adjacent state changes observed at selected checkpoints, but not their timing between checkpoints or their physical trigger.
+The 2020 IODA plot proxies and public operational reports align with the possibility that routing visibility and functional signals diverged, while remaining different measurement constructs. Reported capacity loss is a source-reported operational quantity, not a percentage estimated from RIBs. The image-derived 50.8 pp proxy contrast cannot quantify subscribers, capacity loss, restoration, or uncertainty in the absent original 2020 IODA numerical series. [16]
+The broader methodological implication is to tie each conclusion to a named source, observation unit, denominator and source-access condition. Independent full MRT/UPDATE replay, more negative-control dates, physically evidenced cable paths and richer active probing would be necessary for claims beyond the bounded descriptive result. The archived prior RRC00 192-UPDATE-file reconciliation was reviewed as a recorded execution summary, not independently rerun from original compressed UPDATE files in this final audit.
+Methods
+Measurement windows and primary sources
+Official RIPE RIS compressed MRT RIBs were obtained, in prior project source-native execution, for collectors RRC00, RRC01 and RRC10 at the event endpoints 2020-01-09 08:00 and 2020-01-10 00:00 UTC, and historical reference endpoints 2020-01-02 08:00 and 2020-01-03 00:00 UTC. This is 3 collectors × 2 endpoint files × 2 windows = 12 original RIB files. Exact provider URLs, byte counts and prior checksum values (SHA-256) are fixed in the archived software v1.0.1 manifest [17], [18], [19]. The reference date was selected retrospectively after awareness of the incident, but fixed before observing the reference-window outcomes; it is not prospective preregistration.
+Route extraction, filtering and units
+For each collector, peer identity is (peer ASN, peer IP); the initial observational key is (collector, peer ASN, peer IP, exact prefix). Candidate records are first-checkpoint origin-AS rows for AS30873 or AS12486. A record is eligible only when that identical peer appears anywhere in the full second RIB (not necessarily with that prefix). It is same-origin retained only if the endpoint record for the same peer–prefix continues to have the target origin AS. Unmatched peer coverage, absent or changed endpoint origin, and unparsable AS_PATH adjacency are excluded explicitly from the comparable-neighbor denominator; absence is not automatically a withdrawal. RIB endpoint matching does not establish continuous peer-session liveness.
+For every collector–origin–window group the processing records first-checkpoint target-origin observations (initial), those whose peer is also seen anywhere in the full endpoint RIB (eligible), those whose same peer–prefix continues with the target origin (same-origin retained), and retained observations with a defined origin-adjacent AS on both sides (comparable). The difference initial minus comparable should not be interpreted as observed routing withdrawals. The full 12-group stage counts are enumerated in Supplementary Table S16, including address-family breakdown in S13.
+For comparable first- and second-checkpoint routes, identify the AS immediately upstream of the target origin in each parsed AS_PATH after removing repeated consecutive target-origin prepends. Let C be retained observations with both immediate neighbors defined; Y=1 if those adjacent AS numbers differ between endpoints and Y=0 otherwise. The reported observation-weighted change proportion is sum(Y)/|C|, with changed and comparable counts in Table 1 and Supplementary Tables S2, S13 and S14. Equal-per-peer and equal-per-prefix proportions are computed by first calculating a fraction within each distinct peer or exact prefix and then weighting those groups equally. These alternate estimands do not represent a statistical correction for correlated observers.
+Cohort sensitivity and descriptive contrasts
+The common-key sensitivity set is the intersection, for a given collector and target-origin AS, of keys (peer ASN, peer IP, prefix) whose origin-adjacent neighbor is comparable in both windows. Change fractions are recomputed separately on that identical key set in the event and reference windows, and the difference is event minus reference in percentage points. The analysis does not treat these related observations as IID, does not calculate a confidence interval or P value, and does not interpret AS12486 as an exchangeable untreated control. Counts of initial, eligible, retained, comparable and changed records for all collector–AS–period groups are retained in Supplementary Tables S13–S15.
+Independent data-family audits
+The 2020 IODA original publisher rasters are third-party graphs. Original raster URL and SHA-256 documentation, fixed pixel-to-axis calibration, and systematic variants of baseline/event selections and pixel thresholds underlie the secondary estimates. The 20,250 deterministic variants are parameter settings, not samples from an uncertainty distribution. A separate November 2023 IODA provider-native JSON series was subjected to internal window-sensitivity checks; it is a different event and its original JSON is not in the public aggregate v1.0.2 deposit. RIPE Atlas measurement 8307351 is limited to a single destination/probe set.
+Reproducibility and data integrity
+Source-byte SHA-256 and gzip integrity are recorded for the original 12 RIB files, while archived row-level extraction audits and fixed-group reaggregation verified all 11,419 event and 10,968 reference first-checkpoint origin rows. The openly deposited aggregate v1.0.2 contains only author-prepared summary statistics, checksum/source-link provenance and arithmetic validation; users may reproduce displayed changes and cohort summaries arithmetically, but rebuilding peer–prefix cohorts requires retrieval and processing of provider files. The fully independent 12-MRT refetch/reparse and 192-file historical UPDATE replay were not redone in this publication-preparation round.
+AI-assisted preparation and human accountability
+ChatGPT (OpenAI) was used to assist with language editing, organization, verification planning, interpretation checks and preparation of analysis and reproducibility scripts. It was not used to manufacture empirical network observations. The sole human author retains responsibility for research decisions, numerical validation, citation accuracy, data rights and the scientific conclusions.
+Code availability
+Author-owned research software and provider source-link/checksum provenance are archived as software v1.0.1 at https://doi.org/10.5281/zenodo.23751733 [19], with tagged source https://github.com/EZZALDEEN049/falcon-yemen-resilience/releases/tag/v1.0.1. The MIT license applies only to the author-owned source code; third-party datasets and graphics are not sublicensed. Scripts can verify aggregate calculation logic when supplied with the separately deposited aggregate tables; provider-native reconstruction requires obtaining the original files.
+Data Availability
+Author-prepared aggregate BGP tables, event/reference comparisons, common-key summaries and source provenance are available in Zenodo dataset v1.0.2 (https://doi.org/10.5281/zenodo.23752785) [20]. Original RIPE RIS MRT files remain at https://data.ris.ripe.net/; a versioned manifest lists the exact 12 source URLs, sizes and recorded SHA-256 checksums (https://github.com/EZZALDEEN049/falcon-yemen-resilience/blob/v1.0.1/Provenance/RIPE_RIS_12_RIB_Source_URLs_SHA256.json). A separate referee source-retrieval package provides these manifests and reprocessing scripts but does not redistribute original RIS files or the author-derived individual peer–prefix exports. Such exports are held separately; permission for third-party redistribution has not been established. Requests for additional materials may be directed to the corresponding author (azzaltayyar@gmail.com), subject to provider terms. IODA 2020 publisher-image source URLs and checksums are documented in the software archive [19]; the original 2020 numeric series were unavailable, and original November 2023 provider JSON is not deposited. The public aggregated dataset supports arithmetic verification, not complete reconstruction of individual route observations.
+References
+[1] International Telecommunication Union. International Advisory Body approves landmark report to strengthen submarine cable resilience. ITU press release (10 July 2026). https://www.itu.int/en/mediacentre/Pages/PR-2026-07-10-Submarine-cable-resilience-report.aspx
+[2] International Telecommunication Union. International Advisory Body on Submarine Cable Resilience: Report of the Working Groups 2026 (ITU, 2026). https://www.itu.int/pub/S-IAB-WG-2026
+[3] Omer, M., Nilchiani, R. & Mostashari, A. Measuring the resilience of the trans-oceanic telecommunication cable system. IEEE Syst. J. 3, 295–303 (2009). https://doi.org/10.1109/JSYST.2009.2022570
+[4] Ramanathan, A. & Abdu Jyothi, S. Nautilus: a framework for cross-layer cartography of submarine cables and IP links. Proc. ACM Meas. Anal. Comput. Syst. 7, article 46 (2023). https://doi.org/10.1145/3626777
+[5] Ramanathan, A., Sankaran, R. & Abdu Jyothi, S. Xaminer: an Internet cross-layer resilience analysis tool. Proc. ACM Meas. Anal. Comput. Syst. 8, article 16 (2024). https://doi.org/10.1145/3639042
+[6] Wang, C. J. et al. Threading the ocean: mapping digital routes across submarine cables using Calypso. In Proc. ACM SIGCOMM 2025 (short paper, 2025). https://doi.org/10.1145/3718958.3750512
+[7] Dainotti, A. et al. Analysis of country-wide Internet outages caused by censorship. IEEE/ACM Trans. Netw. 22, 1964–1977 (2014). https://doi.org/10.1109/TNET.2013.2291244
+[8] World Bank. Yemen Monthly Economic Update: January 2020 (21 February 2020). https://www.worldbank.org/en/country/yemen/publication/yemen-monthly-economic-update-january-2020
+[9] Belson, D. Internet Disruption Report: January 2020. Internet Disruption Report (23 February 2020). https://internetdisruption.report/2020/02/23/internet-disruption-report-january-2020/
+[10] Internet Outage Detection and Analysis (IODA). IODA measurement platform and HTTP API documentation. Georgia Tech Internet Intelligence Lab. https://ioda.inetintel.cc.gatech.edu/
+[11] RIPE NCC. RIPE Atlas: Measurements REST API documentation. https://atlas.ripe.net/docs/apis/rest-api-manual/measurements/
+[12] RIPE NCC. RIPE Atlas public measurement 8307351: archived ICMP results for destination 195.94.0.34, 8–12 January 2020 (2020). https://atlas.ripe.net/api/v2/measurements/8307351/results/?start=1578441600&stop=1578873599
+[13] Belson, D. Q4 2023 Internet disruption summary. Cloudflare Blog (22 January 2024). https://blog.cloudflare.com/q4-2023-internet-disruption-summary/
+[14] Global Cloud Xchange / FLAG. Clarification: Yemen Internet outage (2023). https://flagtel.com/clarification-yemen-internet-outage/
+[15] Gambrell, J. Internet collapses in war-torn Yemen over ‘maintenance’ involving undersea line. Associated Press (10 November 2023). Syndicated copy: https://www.wsls.com/news/world/2023/11/10/internet-collapses-in-war-torn-yemen-after-recent-attacks-by-houthi-rebels-targeting-israel-us/
+[16] Sterbenz, J. P. G. et al. Redundancy, diversity, and connectivity to achieve multilevel network resilience, survivability, and disruption tolerance (invited paper). Telecommun. Syst. 56, 17–31 (2014). https://doi.org/10.1007/s11235-013-9816-9
+[17] RIPE NCC. Routing Information Service (RIS): MRT data archives and raw collection documentation. https://ris.ripe.net/docs/mrt/
+[18] CAIDA. BGPStream: historical BGP monitoring data and processing documentation. https://bgpstream.caida.org/
+[19] Al-Tayar, E. FALCON Yemen 2020: Research Software and Source Provenance (Curated Edition), version 1.0.1 [computer software]. Zenodo (2026). https://doi.org/10.5281/zenodo.23751733
+[20] Al-Tayar, E. FALCON Yemen 2020: Aggregated BGP Measurements and Source Provenance, version 1.0.2 [dataset]. Zenodo (2026). https://doi.org/10.5281/zenodo.23752785
+Acknowledgements
+The author acknowledges RIPE NCC and the IODA teams for maintaining publicly accessible measurement resources.
+Author contributions
+Ezzaldeen Al-Tayar was solely responsible for the conception and design of the study, data acquisition and processing, analysis, verification, interpretation, preparation of figures and reproducibility materials, manuscript drafting and revision, and approval of the final manuscript.
+Funding
+No funding was received for conducting this study or preparing the manuscript.
+Competing interests
+The author declares no competing interests.
+Ethics statement
+The study analyses public historical network-routing records and aggregate measurements and did not involve experiments with human participants or animals.
+Supplementary information
+Supplementary Information is supplied as a separate PDF containing the explanatory Tables S1–S15, selection-flow Table S16 and Figures S1–S2. A distinct verification package for confidential editorial assessment contains the underlying supplementary CSVs and source-derived reviewer records, subject to source-rights verification and the sole author’s approval of data-access terms.
+Figure and table legends
+Figure 1 | AS30873 origin-adjacent neighbor-change rates for one 16-hour reference interval and the event-associated interval. Each bar equals changed/comparable two-checkpoint peer–prefix observations; values are not independent-sample confidence intervals. Source: supplementary Tables S14–S15; author-redrawn from aggregate counts.
+Figure 2 | AS12486 IPv6 event-window matching and retention by collector. An eligible peer–prefix observation not retained with the same origin at the second RIB checkpoint is not a measured BGP withdrawal or end-user outage. Source: Supplementary Table S13; author-redrawn from aggregate counts.
+Table 1 | Origin-adjacent AS_PATH neighbor changes among retained comparable peer–prefix observations. Percentage-point (pp) difference = event rate minus reference rate; denominator excludes routes failing the matched-peer, same-origin endpoint and path-parsing conditions.
+Table 2 | AS12486 IPv6 same-origin endpoint retention, with exact eligible first-checkpoint peer–prefix denominators; not IPv6 network availability.

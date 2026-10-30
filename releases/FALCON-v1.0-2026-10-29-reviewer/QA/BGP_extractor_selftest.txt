@@ -1,1 +1,0 @@
-PASS synthetic tests: peer-IP isolation, absent-endpoint peer exclusion, matched origins, prefix aggregation, common observers, invalid AS_PATH

@@ -1,0 +1,688 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+FALCON 2020 — Supplementary Information (sole author)
+
+
+Supplementary Information | Origin-adjacent 
+BGP reconfiguration during Yemen's January 
+2020 FALCON disruption across three RIPE RIS 
+collectors
+Ezzaldeen Al-Tayar | Faculty of Engineering and Information Technology, Taiz University, Taiz, Yemen | 30 
+October 2026 | Supplementary Tables S1–S16 and Figs. S1–S2
+
+Archiving and evidence scope: public dataset v1.0.2 (https://doi.org/10.5281/zenodo.23752785) contains 
+aggregate outputs and arithmetic checks, not individual peer–prefix observations or original provider files. Public 
+software v1.0.1 (https://doi.org/10.5281/zenodo.23751733) contains author-owned code and source provenance. 
+The separate confidential reviewer evidence collection prepared alongside the article may only be supplied under 
+the applicable RIPE/IODA terms. January 2020 IODA numerical samples were not recovered.
+
+Data-access scope. The public Zenodo data and software version DOIs are aggregate and code/provenance 
+archives, respectively; neither contains unmodified provider-origin RIPE MRT, publisher PNG or IODA API JSON 
+bytes. The detailed RIPE peer–prefix event/reference exports and auditing files were preserved in the earlier 
+frozen reviewer study archive. A selected, author-prepared subset has been assembled separately for potential 
+confidential editorial evaluation subject to rights approval. Raw reprocessing still requires independent retrieval 
+and parsing of RIPE RIS RIBs from their official locations.
+
+Table S1. January 2020 published-plot IODA phase summaries (EXPLORATORY)
+
+AS Phase BGP median % Active median % Gap pp
+
+AS30873 pre_event_baseline 100.00 100.00 -0.00
+
+AS30873 early_degradation 95.65 39.53 +56.12
+
+AS30873 acute_event 95.65 44.84 +50.81
+
+AS30873 post_midnight 95.65 51.03 +44.62
+
+AS12486 pre_event_baseline 100.00 100.00 +0.00
+
+AS12486 early_degradation 100.00 100.00 +0.00
+
+AS12486 acute_event 100.00 100.00 +0.00
+
+AS12486 post_midnight 100.00 100.00 +0.00
+
+Original publisher-plot pixels are now retrievable and verified. Values are image-digitized normalized signal 
+summaries (NOT source-native 2020 IODA numeric samples). The raster is aggregated and time-mapping 
+approximate; columns and sensitivity settings are not independent samples. No inferential confidence interval is 
+claimed.
+
+Table S2. January 2020 original-RIB aggregate unit-sensitivity audit
+
+RRC Origin Peer-prefix % Peer median % Prefix median % Any-change prefix
+
+RRC00 12486 6.28 0.00 1.64 4/6
+
+RRC00 30873 66.83 69.07 96.67 79/105
+
+RRC01 12486 4.05 0.00 0.00 2/6
+
+RRC01 30873 67.98 69.07 100.00 79/105
+
+RRC10 12486 14.10 16.67 0.00 2/6
+
+RRC10 30873 64.73 65.98 100.00 75/105
+
+
+
+The Table S2 unit summaries were computed in the frozen source-native study package using 11,419 first-
+checkpoint event rows. The individual row-level export is not within this Supplementary Information PDF or the 
+public Zenodo aggregate DOI; the selected source-derived files are separately assembled for controlled editorial 
+inspection. January 2020 IODA metrics remain image-digitized proxies.
+
+Table S3. Collector-specific between-AS contrasts, not causal effects
+
+RRC Peer-prefix gap pp Prefix-any-change gap pp
+
+RRC00 +60.55 +8.57
+
+RRC01 +63.93 +41.90
+
+RRC10 +50.63 +38.10
+
+Large differences can vary with aggregation unit and sampling density; neither is a cable-specific causal effect.
+
+Table S4. Original IODA November 2023 outcomes and sensitivity
+
+AS IODA family Baseline median Event median Retention (%) Baseline n Event n
+30873 bgp 884.0 356.0 40.27 288 55
+30873 ping-slash24 10.0 6.0 60.00 144 28
+12486 bgp 25.0 25.0 100.00 288 55
+12486 ping-slash24 4.0 4.0 100.00 144 28
+
+The separate November 2023 IODA analysis used provider-origin JSON retained in the historical research 
+archive; only author-derived summary values and the 150-window tabular sensitivity grid are present in the 
+confidential reviewer material, and original provider JSON is excluded. This event is not evidence for January 
+2020.
+
+Four source-native median-retention rows are supplied as Table_S4_IODA_2023_Retentions.csv; the complete source is the 
+archived provider API JSON.
+
+Table S5. Source original 2020 RIPE RIS RIB URLs and SHA-256s
+
+Collector Checkpoint UTC SHA-256 prefix Official RIS URL
+
+RRC00 2020-01-09T08:00 a55cfb90f54c3845…
+https://data.ris.ripe.net/
+rrc00/2020.01/
+bview.20200109.0800.gz
+
+RRC00 2020-01-10T00:00 3d2147cc860c5348…
+https://data.ris.ripe.net/
+rrc00/2020.01/
+bview.20200110.0000.gz
+
+RRC00 2020-01-02T08:00 57281a7a3d7936ac…
+https://data.ris.ripe.net/
+rrc00/2020.01/
+bview.20200102.0800.gz
+
+RRC00 2020-01-03T00:00 2ef04516f2c2ec24…
+https://data.ris.ripe.net/
+rrc00/2020.01/
+bview.20200103.0000.gz
+
+RRC01 2020-01-09T08:00 eb2910a382dd21a5…
+https://data.ris.ripe.net/
+rrc01/2020.01/
+bview.20200109.0800.gz
+
+RRC01 2020-01-10T00:00 00086b6f66483d8f…
+https://data.ris.ripe.net/
+rrc01/2020.01/
+bview.20200110.0000.gz
+
+RRC01 2020-01-02T08:00 ccb041e51924607c…
+https://data.ris.ripe.net/
+rrc01/2020.01/
+bview.20200102.0800.gz
+
+RRC01 2020-01-03T00:00 bb3b359344dfc06c…
+https://data.ris.ripe.net/
+rrc01/2020.01/
+bview.20200103.0000.gz
+
+RRC10 2020-01-09T08:00 d76503427bde035a…
+https://data.ris.ripe.net/
+rrc10/2020.01/
+bview.20200109.0800.gz
+
+RRC10 2020-01-10T00:00 f7f08e3bc76d9d70…
+https://data.ris.ripe.net/
+rrc10/2020.01/
+bview.20200110.0000.gz
+
+RRC10 2020-01-02T08:00 9d7f52abebd95809…
+https://data.ris.ripe.net/
+rrc10/2020.01/
+bview.20200102.0800.gz
+
+RRC10 2020-01-03T00:00 ead6a30924f1ba8d…
+https://data.ris.ripe.net/
+rrc10/2020.01/
+bview.20200103.0000.gz
+
+
+
+The original event six-RIB file identifiers, expected compressed byte counts, SHA-256 hashes and source URLs 
+are in Table_S5_Original_RIB_Manifest.csv. The hash list is an author’s historical audit manifest, not proof that 
+this supplement contains the binary RIBs. The source archives were not downloaded independently for this 
+revision.
+
+Table S6. January 2020 raster-digitization sensitivity (20,250 configurations)
+
+Data source Settings Lower gap (pp) Upper gap (pp) Interpretation
+
+AS30873 publisher 
+image
+
+20,250 +45.8074 +55.1698
+Deterministic analyst-
+choice range; not a 
+confidence interval
+
+Source-image-reproduced 20,250-setting raster sensitivity grid: 
+Table_S6_IODA_2020_20250_Deterministic_Settings.csv. Re-run against unchanged publisher AS30873 PNG 
+produced a CSV byte-identical to the archived release, SHA-256 
+fa9720246ec52edb6770c8637f52da260856908574fb490a4d49f0e825245e12. Range +45.8074 to +55.1698 pp. 
+Each setting is an analyst choice, not an independent measurement or confidence interval. Calibrated source 
+raster is verified, but source-native 2020 IODA numbers remain unavailable.
+
+Table S7. RIPE Atlas 2020, single-target original audit metadata
+
+Measurement Target Probes Replies / attempts Scope
+
+8307351 195.94.0.34 7 3,343 / 3,360
+8–12 Jan 2020, one 
+target only
+
+RIPE Atlas measurement 8307351 for 195.94.0.34: seven probe IDs and 3,343 positive-reply measurement results out of 
+3,360 in the January 8–12, 2020 archived source audit. See the INCLUDED Supplement/Atlas_2020_audit.zip (audit.json) for 
+aggregated hourly/daily counts, source URLs and original API response SHA-256. The 1.39 MB original per-result source API 
+response bytes are not redistributed in this reviewer archive, and individual result payloads are not independently replayed 
+here. This is a one-target aggregate diagnostic, not Yemen-wide reachability or independent validation of 2020 IODA.
+
+Table S8. Optional August 2026 routing-concentration context
+
+Origin AS Observed IPv4-prefix share Observed /24-equivalent space share
+AS30873 76.00% 95.88%
+AS12486 21.33% 3.67%
+AS204317 2.67% 0.44%
+
+2026 routing concentration is background-only, not a control or supporting 2020 event estimate. Table S8 
+displays the context-only percentage snapshot; it does not represent the historical period and is not used in the 
+main causal or descriptive contrasts. No additional figure is provided for this 2026-only context.
+
+Source-native BGP reprocessing and fail-closed gates
+Reproduction status: source-native individual two-RIB export completed in GitHub Actions (frozen commit 
+907b59027807ab292d33886d36e65e2bb07f63c6) for RRC00/RRC01/RRC10. The reviewer bundle directly 
+includes all 11,419 first-checkpoint source-decoded peer–prefix rows, each prefix's within-peer change 
+distribution and each observer's within-prefix change distribution, plus source RIB URLs, SHA-256s and output 
+audit JSON. To regenerate them from RIPE official archives, install pybgpkit-parser and run the frozen 
+tools/ripe2020_peer_prefix_source_native_final.py with FALCON_RRC=rrc00, rrc01 and rrc10 on a network-
+connected host. Valid output must reproduce all six comparator count checks. Whole-RIB peer presence at both 
+endpoints is not continuous peer session proof.
+
+Official original archive: https://data.ris.ripe.net/ . Source-naming convention: https://ris.ripe.net/docs/mrt/ . The 192 update 
+source SHA-256 entries are recorded at the author’s private GitHub repository in 
+results/ripe_2020_source_original_16h_aw_manifest.json; independent reviewers need authorized access to that repository 
+or a copy of the list. Public URLs alone do not prove the recorded source data were re-parsed.
+
+Published IODA 2020 plot provenance and permissions
+Original incident article: https://internetdisruption.report/2020/02/23/internet-disruption-report-january-2020/ . 
+Direct unchanged publisher PNGs: https://internetdisruption.report/wp-content/uploads/2020/02/jan-910-yemen-
+
+
+
+as30783-ioda.png (caption AS30873; PNG actually labelled AS30873) and https://internetdisruption.report/wp-
+content/uploads/2020/02/jan-910-yemen-as12486-ioda.png . Both were fetched in a provenance-logged GitHub 
+Actions run and are 1840 × 874 PNGs. SHA-256: AS30873 
+229b9ed3e0e169c78331b7e50f0a2af9f47f88c3d0b73d0524db633d14977efd; AS12486 
+fb4be5c7d169a659a1b7f5c207eb56c5390d20faaf60705dc0d34610466a612c. Independent RGB trace extraction 
+verified 1661 BGP and active columns for AS30873 and 1668 BGP / 1617 active columns for AS12486. The 
+direct figure is publisher-owned; these image copies are for private calibration review only, not publication or 
+relicensing. Native IODA 2020 numeric arrays were not obtained.
+
+2020 IODA primary series NOT recovered. Both original publisher-raster PNGs (1840 × 874 pixels) have been 
+retrieved and SHA-256 checked; color-column extraction and an independently rerun 20,250-setting deterministic 
+sensitivity grid agree exactly with the previous archived file. The raster provenance and numerical re-extraction 
+gate are CLOSED, but raw provider numerical samples, sampling timing and independently measured service 
+reachability remain UNAVAILABLE. Full raster audit metadata, calibration script and CSV are included as separate 
+reviewer materials; publisher-owned images are linked by exact URLs rather than redistributed as licensed 
+publication figures.
+
+COMPLETE / VERIFIED: (i) 2020 two-checkpoint RIPE RIB original-source CSVs and per-unit reconstructions 
+(11,419 rows); (ii) source-publisher IODA 2020 raster fingerprinting and pixel extraction; (iii) 20,250-setting raster 
+deterministic sensitivity rerun; (iv) native November 2023 IODA JSON reproduction. REMAINING PRIMARY-
+SOURCE LIMITS: provider-native IODA 2020 numerical samples; continuous peer-session telemetry; 
+RRC01/RRC10 full UPDATE replay; any credible network-to-physical-cable causal counterfactual. These are not 
+implicitly closed by the available computations.
+
+Table S9. Independent audit gates and remaining primary-source limitations
+
+Evidence / experiment Result of this revision Publication status
+2020 RRC00/01/10 archived two-snapshot 
+audits
+
+New source-original six-RIB peer–prefix 
+CSVs recovered and all six original counts 
+matched. Independent row-to-group 
+reaggregation passed 24 checks.
+
+Completed source-native two-checkpoint 
+extraction; archived 192-file update replay is 
+a separate RRC00 workflow.
+
+2020 RRC00 16-hour replay audit Stored report asserts 192 contiguous 
+UPDATE inputs, 110,719 candidate update 
+records, 6,586 vs 6,586 end states, zero 
+Origin/AS_PATH mismatches; manifest 
+cross-checks passed.
+
+Auditor verifies recorded arithmetic, not 
+source execution.
+
+2020 peer-prefix and per-prefix distributions Full 11,419 original-source first-route rows 
+produced, with 105 AS30873 and six 
+AS12486 matched prefixes per collector, 
+per-prefix/per-peer distributions and 96 
+matched observer comparisons.
+
+Two-RIB extraction COMPLETE: original 
+MRT hashes verified; reviewer CSVs saved 
+at commit 907b590. Full RRC01/10 A/W 
+replay still open.
+
+Published January 2020 IODA rasters Both original publisher PNGs 
+retrieved and SHA-256 recorded, 
+image label AS30873 
+independently confirmed despite 
+filename typo, original pixel 
+calibration rechecked and all 
+20,250 sensitivity settings 
+reproduced exactly.
+
+Original published-image gate 
+CLOSED. Still EXPLORATORY 
+SECONDARY: underlying original 
+2020 IODA numeric series absent; 
+plots are not confidence intervals 
+or customer reachability.
+
+November 2023 original IODA JSON Four native retention results and window 
+grid reproduced in previous audit.
+
+Can remain as independently recalculated 
+source-native historical results.
+
+Reproduction instructions for primary-source closure
+
+1. Obtain the TWELVE original compressed RIPE RIS RIB files, at 9 January 08:00 and 10 January 00:00 UTC 
+(six event RIBs) and 2 January 08:00 and 3 January 00:00 UTC (six reference RIBs), for RRC00, RRC01 and 
+RRC10. Original timestamps, URLs, bytes and SHA-256 values are listed in 
+Supplement/Reference_And_Event_Original_RIB_12_SHA256.json. Verify SHA-256 and gzip integrity before 
+source decoding; the original binaries are not redistributed.
+
+
+
+2. Verify locally downloaded source bytes and gzip CRC using Code/fetch_original_2020_ribs.py (event 
+manifest) and/or the original repository parser source; source checks must fail closed on hash mismatches. The 
+event and reference six-RIB collections are separate datasets with different snapshot windows and counts.
+
+3. BOTH SOURCE-NATIVE ENDPOINT PAIRS COMPLETED: original RIB files were processed into peer–prefix 
+CSVs in Evidence/BGP_2020/{rrc00,rrc01,rrc10}/ for the event and 
+Evidence/Reference_2020_20200102/{rrc00,rrc01,rrc10}/ for the one-week-earlier reference. Raw event export is 
+pinned at 907b59027807ab292d33886d36e65e2bb07f63c6; reference export at 
+e7d0f51729ef8fffe138fa7fc34a3130455e1ad2. Verify each individual audit.json and reproduce group/fixed-key 
+analyses using the included scripts. These two-snapshot analyses are separate from the historical RRC00 
+UPDATE replay.
+
+4. From the extracted archive root, run Code/verify_reviewer_bundle.py for source-export numerical and 
+SHA-256 checks, then run Code/compare_2020_event_vs_non_event.py --event-root Evidence/BGP_2020 --
+reference-root Evidence/Reference_2020_20200102 --output-dir QA/REPRODUCED_REFERENCE_LOCAL. 
+These verify the released observation-level exports and their aggregate calculations; they do NOT substitute for 
+downloading and decoding the original 12 RIPE MRT compressed RIB binaries.
+
+5. IODA 2020 ORIGINAL-IMAGE GATE CLOSED: obtain the original-size PNG bytes from the two direct 
+publisher URLs above (no resizing), verify source hashes, and run Code/recheck_ioda2020_original_pngs.py 
+with the historical x=112–1779, zero y=632 and RGB colors. The recheck reproduces AS30873 +50.8144 pp and 
+AS12486 0 pp. Then run Code/digitization_sensitivity.py on the AS30873 source PNG and verify its full CSV 
+SHA-256 fa9720246ec52edb6770c8637f52da260856908574fb490a4d49f0e825245e12. These tests do NOT 
+recover original IODA numeric samples.
+
+6. The source webpage calls the AS30873 graph "CAIDA IODA graph for AS30873", but its linked image 
+pathname ends "as30783-ioda.png". This filename discrepancy must be preserved and never silently treated as 
+evidence of the graph’s ASN without checking the figure content.
+
+Original source article (third-party): https://internetdisruption.report/2020/02/23/internet-disruption-report-
+january-2020/ .
+
+Auditable source-export and release checks: QA/BGP_rowlevel_independent_validation.json and QA/FINAL_RELEASE_GATES_2026-
+10-29.json. IODA 2020 published-image provenance: Evidence/IODA_2020_Original_Publisher_Image_URLs_and_SHA256.json; pixel 
+recalibration: Evidence/pixel_level_recalibration_audit.json; deterministic sensitivity: 
+Evidence/ioda_2020_original_raster_20250_settings.csv. Historical blocked-image statements were superseded for the original 
+publisher rasters only; original IODA 2020 provider-native numerical samples remain unavailable.
+
+Table S10. New January 2020 source-native per-prefix/per-peer distributions
+
+The committed public-source RIPE RIS RIB exports contain one observation for each initial (collector, peer ASN, 
+peer IP, origin prefix). The two snapshots are 9 Jan 08:00 and 10 Jan 00:00 UTC. The files below summarize the 
+full 11,419-source-row extraction. Matched prefix denominators: 105 for AS30873 and 6 for AS12486 at each 
+collector; these networks are not exchangeable. The complementary 
+Table_S10_2020_BGP_Prefix_Peer_SourceNative_Summary.csv contains machine-readable values. No 
+conventional independent-sample confidence intervals are calculated.
+
+Collector Origin AS Matched prefixes Prefix mean / 
+median (%)
+
+Matched peers Peer mean / 
+median (%)
+
+RRC00 AS30873 105 67.01 / 96.67 110 67.74 / 69.07
+
+RRC00 AS12486 6 6.42 / 1.64 62 6.18 / 0.00
+
+RRC01 AS30873 105 68.04 / 100.00 40 74.19 / 69.07
+
+RRC01 AS12486 6 3.95 / 0.00 26 3.85 / 0.00
+
+RRC10 AS30873 105 64.75 / 100.00 23 65.34 / 65.98
+
+RRC10 AS12486 6 14.10 / 0.00 13 14.10 / 16.67
+
+
+
+Underlying author-prepared source-derived event CSV files were frozen at the reported provenance commit and 
+are included only in the separate confidential reviewer evidence bundle, subject to source-rights review, not in 
+this PDF or public Zenodo aggregate release. The corresponding historical source paths and source-level audits 
+are retained in the frozen project archive.
+
+Table S11. Same-peer paired neighbor-change comparison (descriptive only)
+
+Within each collector, join AS-specific peer summaries on both original peer ASN and peer IP; per-peer changed 
+fractions have non-identical underlying AS prefix inventories. Table S11 reports 62/62, 21/21 and 13/13 positive 
+paired descriptive differences. Do not treat the 96 collector-specific pairs as independent route- or user-level 
+observations. Full CSVs and counts are enclosed and source-frozen.
+
+Collector Common peers Positive pairs Median difference 
+(pp)
+
+IQR (pp)
+
+RRC00 62 62/62 +63.92 +51.37 to +69.07
+
+RRC01 21 21/21 +69.07 +59.79 to +69.07
+
+RRC10 13 13/13 +49.31 +47.25 to +51.37
+
+Frozen artifacts, code, source rights and audit limits
+The separately prepared confidential reviewer evidence archive contains author-prepared event/reference peer–
+prefix CSV exports, grouped audits, selected supplemental tabular outputs, and source URL/hash manifest. 
+Original RIPE RIS MRT binaries are hosted by RIPE NCC and are not redistributed. Third-party publisher PNGs 
+and original IODA JSON are not licensed for reuse by the public Zenodo software or aggregate-data deposits. 
+Actual access/redistribution terms must be confirmed by the sole author before sending any restricted reviewer 
+materials.
+
+Table S12. Directional BGP adjacency transitions (source-native 2020 RIB checkpoints)
+Table S12 is a complete enumeration of pre→post immediate-AS_PATH-neighbor transition pairs among 10,333 
+retained comparable observations. The input rows came from original RIPE RIB archives at 2020-01-09 08:00 
+and 2020-01-10 00:00 UTC for RRC00, RRC01 and RRC10. It is not a route-traffic or cable-path transition table. 
+Full CSV: Table_S12_2020_Adjacency_Transitions_by_Collector.csv.
+
+Collector Origin AS Largest three 
+transitions (n)
+
+Total matched
+
+RRC00 30873 15412→174: 2793; 
+174→174: 2063; 
+3491→174: 729
+
+6220
+
+RRC00 12486 15412→15412: 279; 
+6762→6762: 61; 
+15412→197206: 12
+
+366
+
+RRC01 30873 15412→174: 1089; 
+174→174: 698; 
+8529→174: 208
+
+2180
+
+RRC01 12486 15412→15412: 120; 
+6762→6762: 21; 
+15412→197206: 4
+
+148
+
+RRC10 30873 15412→174: 593; 
+174→174: 473; 
+3491→174: 140
+
+1341
+
+RRC10 12486 15412→15412: 51; 78
+
+
+
+Collector Origin AS Largest three 
+transitions (n)
+
+Total matched
+
+6762→6762: 13; 
+15412→6762: 6
+
+Figure S1. Most frequent source-native immediate-AS_PATH origin-adjacent transitions, INCLUDING unchanged 
+pairs such as AS174→AS174. Counts are endpoint-matched peer–prefix observations; they do not identify traffic 
+volume, physical paths, or cable-specific causes.
+
+Table S13. IPv4/IPv6 observation selection and parsing
+Address-family strata are inferred solely from the prefix strings in the original 11,419 CSV observations. Same-
+peer presence is tested at two endpoints; “not retained” can reflect target origin loss, policy, session behavior, or 
+other unobserved causes, and is not a directly observed withdrawal. Full CSV: 
+Table_S13_2020_IPv4_IPv6_Selection_and_Transitions.csv. The initial counts include peer records not 
+necessarily present in the full endpoint RIB. In particular, AS12486 IPv6 RRC00 initial/eligible = 55/54 and 
+RRC01 = 25/24; the main-text event retention fractions use eligible as denominator (0/54 and 0/24, not 0/55 and 
+0/25).
+
+RRC AS AF Initial Eligible Retained
+Changed / 
+comparable
+
+RRC00 30873 IPv4 6173 6172 5820 3879 / 5820
+
+RRC00 30873 IPv6 438 430 400 278 / 400
+
+RRC00 12486 IPv4 373 373 366 23 / 366
+
+RRC00 12486 IPv6 55 54 0 0 / 0
+
+RRC01 30873 IPv4 2493 2392 2029 1358 / 2029
+
+RRC01 30873 IPv6 198 190 151 124 / 151
+
+RRC01 12486 IPv4 154 148 148 6 / 148
+
+RRC01 12486 IPv6 25 24 0 0 / 0
+
+RRC10 30873 IPv4 1316 1316 1261 815 / 1261
+
+RRC10 30873 IPv6 103 103 80 53 / 80
+
+RRC10 12486 IPv4 78 78 78 11 / 78
+
+RRC10 12486 IPv6 13 13 0 0 / 0
+
+
+
+Status update — completed one-week-earlier source-native reference reconstruction
+The historical January 2 08:00 UTC to January 3 00:00 UTC, 2020 reference comparison was selected 
+retrospectively AFTER the event had occurred but fixed BEFORE the reference-window outcomes were 
+examined. All six additional original-source RIPE RIS RIB files were checksum-logged and processed; peer–
+prefix exports are preserved in GitHub commit e7d0f51729ef8fffe138fa7fc34a3130455e1ad2. The comparison 
+was independently reaggregated and smoke-tested from exported records. The event and reference windows 
+each span 16 hours. The fixed selection is NOT prospective preregistration, an estimate of a population 
+distribution of normal churn, or a causal control.
+
+Table S14. Source-native January 2020 pre-event reference comparison
+Source-documented historical RIS RIBs: 2 January 2020, 08:00 UTC → 3 January 2020, 00:00 UTC 
+(retrospective reference); 9 January 2020, 08:00 UTC → 10 January 2020, 00:00 UTC (event-associated). Both 
+windows span 16 hours. The reference date was fixed before its outcomes were examined, not before the event 
+or event-result review. Rates are conditional on parseable, retained, same-origin peer–prefix records; neither 
+window measures continuous peer uptime, traffic volume or directly observed withdrawals.
+
+RRC AS Reference 
+changed/co
+mp.
+
+Reference % Event 
+changed/co
+mp.
+
+Event % Delta pp
+
+RRC00 30873 29/6047 0.48 4157/6220 66.83 66.35
+
+RRC00 12486 0/410 0.00 23/366 6.28 6.28
+
+RRC01 30873 23/2549 0.90 1482/2180 67.98 67.08
+
+RRC01 12486 0/172 0.00 6/148 4.05 4.05
+
+RRC10 30873 6/1464 0.41 868/1341 64.73 64.32
+
+RRC10 12486 0/97 0.00 11/78 14.10 14.10
+
+Difference = event-window changed-neighbor fraction minus reference-window changed-neighbor fraction in 
+percentage points. This is not a confidence interval or a national-reachability estimate. Use the accompanying 
+CSV for full denominators, eligible/retained counts, equal-prefix and equal-peer summaries, and IPv4/IPv6 strata.
+
+Table S15. Comparison restricted to identical peer–prefix keys
+
+RRC AS Keys in both Event % Reference % Difference pp
+
+RRC00 30873 5965 67.16 0.49 66.67
+
+RRC00 12486 349 6.59 0.00 6.59
+
+RRC01 30873 2180 67.98 1.01 66.97
+
+RRC01 12486 143 4.20 0.00 4.20
+
+RRC10 30873 1341 64.73 0.37 64.35
+
+RRC10 12486 78 14.10 0.00 14.10
+
+The fixed-key set is the intersection of (peer ASN, peer IP, exact prefix) among comparable target-origin records 
+in BOTH windows. Conditioning on this intersection may induce survivorship/observer-selection bias; it is 
+supplementary, not a causal matched-pair estimator.
+
+
+
+Table S16. First-checkpoint selection into comparable-route denominators in each collector–origin–window group. 
+Initial is the first-RIB origin observation count; eligible additionally requires matched peer presence in the full 
+endpoint RIB; retained requires the same origin for the same peer–prefix at the second checkpoint; comparable 
+requires parseable origin-adjacent AS at both endpoints. These are overlapping nested stages and are NOT 
+observed withdrawal counts.
+
+RRC AS Window Initial Eligible Retained Comparable
+Not 
+comparable
+
+RRC00 12486 reference 417 410 410 410 7 (1.68%)
+RRC00 12486 event 428 427 366 366 62 (14.49%)
+RRC00 30873 reference 6153 6048 6047 6047 106 (1.72%)
+RRC00 30873 event 6611 6602 6220 6220 391 (5.91%)
+RRC01 12486 reference 179 172 172 172 7 (3.91%)
+RRC01 12486 event 179 172 148 148 31 (17.32%)
+RRC01 30873 reference 2658 2553 2549 2549 109 (4.10%)
+RRC01 30873 event 2691 2582 2180 2180 511 (18.99%)
+RRC10 12486 reference 97 97 97 97 0 (0.00%)
+RRC10 12486 event 91 91 78 78 13 (14.29%)
+RRC10 30873 reference 1464 1464 1464 1464 0 (0.00%)
+RRC10 30873 event 1419 1419 1341 1341 78 (5.50%)
+
+Figure S2. Event vs pre-event reference, three RIPE RIS collectors
+
+Descriptive bars are exact changed/comparable RIB-endpoint ratios with original record-level denominators. No 
+confidence intervals are implied.
+
+Source provenance and limitations
+The confidential reviewer evidence package prepared for the submitting author includes source-derived per-
+collector event/reference peer–prefix CSV files, available audit files, a data dictionary, supplemental tabular 
+analyses and source URL/SHA-256 provenance. This PDF itself provides aggregate information and does not 
+contain the raw route rows or any provider-original MRT file. Same-origin nonretention is not equivalent to a BGP 
+withdrawal; a peer observed at two endpoints is not evidence of continuous peer availability.
+
+
+	Table S1. January 2020 published-plot IODA phase summaries (EXPLORATORY)
+	Table S2. January 2020 original-RIB aggregate unit-sensitivity audit
+	Table S3. Collector-specific between-AS contrasts, not causal effects
+	Table S4. Original IODA November 2023 outcomes and sensitivity
+	Table S5. Source original 2020 RIPE RIS RIB URLs and SHA-256s
+	Table S6. January 2020 raster-digitization sensitivity (20,250 configurations)
+	Table S7. RIPE Atlas 2020, single-target original audit metadata
+	Table S8. Optional August 2026 routing-concentration context
+	Source-native BGP reprocessing and fail-closed gates
+	Published IODA 2020 plot provenance and permissions
+	2020 IODA primary series NOT recovered. Both original publisher-raster PNGs (1840 × 874 pixels) have been retrieved and SHA-256 checked; color-column extraction and an independently rerun 20,250-setting deterministic sensitivity grid agree exactly with the previous archived file. The raster provenance and numerical re-extraction gate are CLOSED, but raw provider numerical samples, sampling timing and independently measured service reachability remain UNAVAILABLE. Full raster audit metadata, calibration script and CSV are included as separate reviewer materials; publisher-owned images are linked by exact URLs rather than redistributed as licensed publication figures.
+	Table S9. Independent audit gates and remaining primary-source limitations
+	Reproduction instructions for primary-source closure
+	Table S10. New January 2020 source-native per-prefix/per-peer distributions
+	Table S11. Same-peer paired neighbor-change comparison (descriptive only)
+
+	Frozen artifacts, code, source rights and audit limits
+	Table S12. Directional BGP adjacency transitions (source-native 2020 RIB checkpoints)
+	Table S13. IPv4/IPv6 observation selection and parsing
+	Status update — completed one-week-earlier source-native reference reconstruction
+	Table S14. Source-native January 2020 pre-event reference comparison
+	Table S15. Comparison restricted to identical peer–prefix keys
+	Table S16. First-checkpoint selection into comparable-route denominators in each collector–origin–window group. Initial is the first-RIB origin observation count; eligible additionally requires matched peer presence in the full endpoint RIB; retained requires the same origin for the same peer–prefix at the second checkpoint; comparable requires parseable origin-adjacent AS at both endpoints. These are overlapping nested stages and are NOT observed withdrawal counts.
+
+	Figure S2. Event vs pre-event reference, three RIPE RIS collectors
+	Source provenance and limitations
+
